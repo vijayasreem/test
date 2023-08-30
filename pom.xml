@@ -8,14 +8,14 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Sacral.com</groupId>
-	<artifactId>SAC-8</artifactId>
+	<groupId>com.test</groupId>
+	<artifactId>SAC-12</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Project_LIC</name>
-	<description>Project_LIC</description>
+	<name>Pro</name>
+	<description>Pro</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

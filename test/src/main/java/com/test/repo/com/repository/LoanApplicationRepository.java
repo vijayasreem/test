@@ -1,24 +1,18 @@
-Here is the Spring Boot repository code for the given user story:
+As an assistant, I can help you with the Spring Boot Repository code. Here is an example of a LoanApplicationRepository with the required methods:
 
 ```java
 package com.test.repo.com.repository;
 
 import com.test.repo.com.model.LoanApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
-    
+
     LoanApplication findByLoanId(String loanId);
-    
-    // You can add more custom methods here if needed
-    
+
+    // Add any additional methods required for your application
+
 }
 ```
 
-Make sure to replace `com.test.repo.com.model` with the actual package name for your model class.
-
-This repository interface extends the `JpaRepository` interface provided by Spring Data JPA, which gives you access to basic CRUD operations. The `findByLoanId` method is a custom method that retrieves the loan application details based on the Loan ID entered by the user.
-
-You can add more custom methods to this repository interface if needed, based on your specific requirements.
+Please note that you might need to create the `LoanApplication` entity class in the `com.test.repo.com.model` package as well.

@@ -1,4 +1,4 @@
-Sure! Here's an example of a Spring Boot Service class for the given repository:
+Sure, here is the Spring Boot Service class for the given repository:
 
 ```java
 package com.test.repo.com.service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoanApplicationService {
-    
+
     private final LoanApplicationRepository loanApplicationRepository;
 
     @Autowired
@@ -18,19 +18,16 @@ public class LoanApplicationService {
         this.loanApplicationRepository = loanApplicationRepository;
     }
 
-    // Add your service methods here
-    
     public LoanApplication findByLoanId(String loanId) {
         return loanApplicationRepository.findByLoanId(loanId);
     }
-
-    // Add any additional service methods required for your application
-    
 }
 ```
 
-In this example, the `LoanApplicationService` class is annotated with `@Service` to mark it as a Spring Bean. The `LoanApplicationRepository` is injected into the service class using constructor injection.
+In this example, the `LoanApplicationService` class is annotated with `@Service` to indicate that it is a Spring-managed service component.
 
-You can add your own service methods to perform business logic or call methods from the repository. The example includes a method `findByLoanId` that delegates to the corresponding method in the repository.
+The `LoanApplicationService` class has a constructor that takes an instance of `LoanApplicationRepository` as a parameter and uses constructor-based dependency injection to inject the repository bean.
 
-Remember to adjust the package name and imports according to your project's structure.
+The `findByLoanId` method delegates the call to the repository's `findByLoanId` method to retrieve the loan application details based on the loan ID.
+
+Please make sure the package name and imports are adjusted according to your project structure.

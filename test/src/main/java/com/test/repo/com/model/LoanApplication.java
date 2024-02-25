@@ -1,42 +1,65 @@
-Apologies for the confusion. Here is an example of a LoanApplication entity/model class in the com.test.repo.com.model package:
+Sure! Here is an example of a Spring Boot entity/model class with the package name `com.test.repo.com.model` for the given repository:
 
 ```java
 package com.test.repo.com.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "loan_applications")
 public class LoanApplication {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "loan_id")
+    
     private String loanId;
-
-    // Add any additional fields and methods required for your application
-
+    private String applicantName;
+    // Add other fields as per your requirements
+    
+    // Constructors, getters, and setters
+    
+    public LoanApplication() {
+    }
+    
+    public LoanApplication(String loanId, String applicantName) {
+        this.loanId = loanId;
+        this.applicantName = applicantName;
+    }
+    
+    // Getters and Setters
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public String getLoanId() {
         return loanId;
     }
-
+    
     public void setLoanId(String loanId) {
         this.loanId = loanId;
     }
-
-    // Add getters and setters for additional fields
-
+    
+    public String getApplicantName() {
+        return applicantName;
+    }
+    
+    public void setApplicantName(String applicantName) {
+        this.applicantName = applicantName;
+    }
+    
+    // Other getters and setters for additional fields
 }
 ```
 
-Make sure to adjust the fields and annotations according to your application requirements.
+In this example, the `LoanApplication` class is annotated with `@Entity` to specify that it is a JPA entity. It has fields for the loan ID and applicant name, along with their respective getters and setters.
+
+The `@Id` annotation is used to mark the `id` field as the primary key, and the `@GeneratedValue` annotation with `GenerationType.IDENTITY` strategy is used to generate unique IDs automatically.
+
+You can add additional fields, constructors, and methods as per your requirements.

@@ -1,65 +1,36 @@
-Sure! Here is an example of a Spring Boot entity/model class with the package name `com.test.repo.com.model` for the given repository:
+Here is the corresponding Entity/Model class for the repository:
 
 ```java
 package com.test.repo.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Loan_Application__c")
 public class LoanApplication {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+    @Column(name = "Loan_Id__c")
     private String loanId;
-    private String applicantName;
-    // Add other fields as per your requirements
-    
-    // Constructors, getters, and setters
-    
-    public LoanApplication() {
-    }
-    
-    public LoanApplication(String loanId, String applicantName) {
-        this.loanId = loanId;
-        this.applicantName = applicantName;
-    }
-    
-    // Getters and Setters
-    
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
+
+    // Add other fields and their respective annotations
+
     public String getLoanId() {
         return loanId;
     }
-    
+
     public void setLoanId(String loanId) {
         this.loanId = loanId;
     }
-    
-    public String getApplicantName() {
-        return applicantName;
-    }
-    
-    public void setApplicantName(String applicantName) {
-        this.applicantName = applicantName;
-    }
-    
-    // Other getters and setters for additional fields
+
+    // Add getters and setters for other fields
+
 }
 ```
 
-In this example, the `LoanApplication` class is annotated with `@Entity` to specify that it is a JPA entity. It has fields for the loan ID and applicant name, along with their respective getters and setters.
+In this class, we annotate it with `@Entity` to indicate that it is a persistent entity. We also specify the table name using `@Table` annotation and the column name for the `loanId` field using `@Column` annotation.
 
-The `@Id` annotation is used to mark the `id` field as the primary key, and the `@GeneratedValue` annotation with `GenerationType.IDENTITY` strategy is used to generate unique IDs automatically.
-
-You can add additional fields, constructors, and methods as per your requirements.
+Please note that you need to add other fields and their respective annotations based on the fields present in the `Loan_Application__c` object in Salesforce.

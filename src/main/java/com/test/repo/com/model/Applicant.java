@@ -1,34 +1,24 @@
 
 package com.test.repo.com.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "applicant")
 public class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "credit_score")
-    private Integer creditScore;
+    private boolean identityVerified;
+    private boolean addressVerified;
+    private double annualIncome;
+    private int creditScore;
 
-    @Column(name = "payment_history")
-    private Integer paymentHistory;
-
-    @Column(name = "outstanding_debts")
-    private Double outstandingDebts;
-
-    @Column(name = "credit_utilization")
-    private Double creditUtilization;
-
-    // Getters and setters
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -38,35 +28,35 @@ public class Applicant {
         this.id = id;
     }
 
-    public Integer getCreditScore() {
+    public boolean isIdentityVerified() {
+        return identityVerified;
+    }
+
+    public void setIdentityVerified(boolean identityVerified) {
+        this.identityVerified = identityVerified;
+    }
+
+    public boolean isAddressVerified() {
+        return addressVerified;
+    }
+
+    public void setAddressVerified(boolean addressVerified) {
+        this.addressVerified = addressVerified;
+    }
+
+    public double getAnnualIncome() {
+        return annualIncome;
+    }
+
+    public void setAnnualIncome(double annualIncome) {
+        this.annualIncome = annualIncome;
+    }
+
+    public int getCreditScore() {
         return creditScore;
     }
 
-    public void setCreditScore(Integer creditScore) {
+    public void setCreditScore(int creditScore) {
         this.creditScore = creditScore;
-    }
-
-    public Integer getPaymentHistory() {
-        return paymentHistory;
-    }
-
-    public void setPaymentHistory(Integer paymentHistory) {
-        this.paymentHistory = paymentHistory;
-    }
-
-    public Double getOutstandingDebts() {
-        return outstandingDebts;
-    }
-
-    public void setOutstandingDebts(Double outstandingDebts) {
-        this.outstandingDebts = outstandingDebts;
-    }
-
-    public Double getCreditUtilization() {
-        return creditUtilization;
-    }
-
-    public void setCreditUtilization(Double creditUtilization) {
-        this.creditUtilization = creditUtilization;
     }
 }

@@ -12,36 +12,19 @@ public class Applicant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private boolean identityVerified;
-    private boolean addressVerified;
+    
     private double annualIncome;
+    
     private int creditScore;
-
-    // Getters and Setters
-
+    
+    // Getters and setters
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public boolean isIdentityVerified() {
-        return identityVerified;
-    }
-
-    public void setIdentityVerified(boolean identityVerified) {
-        this.identityVerified = identityVerified;
-    }
-
-    public boolean isAddressVerified() {
-        return addressVerified;
-    }
-
-    public void setAddressVerified(boolean addressVerified) {
-        this.addressVerified = addressVerified;
     }
 
     public double getAnnualIncome() {

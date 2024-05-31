@@ -2,14 +2,13 @@ package com.test.repo.com.controller;
 
 import com.test.repo.com.service.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/applicant")
+@RestController
+@RequestMapping("/applicants")
 public class ApplicantController {
 
     private final ApplicantService applicantService;
@@ -19,67 +18,23 @@ public class ApplicantController {
         this.applicantService = applicantService;
     }
 
-    @PostMapping("/verifyDocuments")
-    @ResponseBody
-    public String verifyDocuments(@RequestBody DocumentVerificationRequest request) {
-        boolean identityVerified = request.isIdentityVerified();
-        boolean addressVerified = request.isAddressVerified();
-
-        applicantService.verifyDocuments(identityVerified, addressVerified);
-
-        return "Document verification completed.";
-    }
-
-    @PostMapping("/evaluateCredit")
-    @ResponseBody
-    public String evaluateCredit(@RequestBody CreditEvaluationRequest request) {
-        int annualIncome = request.getAnnualIncome();
-        int creditScore = request.getCreditScore();
-
-        applicantService.evaluateCredit(annualIncome, creditScore);
-
-        return "Credit evaluation completed.";
-    }
-
-    public static class DocumentVerificationRequest {
-        private boolean identityVerified;
-        private boolean addressVerified;
-
-        public boolean isIdentityVerified() {
-            return identityVerified;
-        }
-
-        public void setIdentityVerified(boolean identityVerified) {
-            this.identityVerified = identityVerified;
-        }
-
-        public boolean isAddressVerified() {
-            return addressVerified;
-        }
-
-        public void setAddressVerified(boolean addressVerified) {
-            this.addressVerified = addressVerified;
+    @GetMapping("/{applicantId}/highLimitCreditScore")
+    public String checkHighLimitCreditScoreEligibility(@PathVariable Long applicantId) {
+        boolean isEligible = applicantService.isEligibleForHighLimitCreditScore(applicantId);
+        if (isEligible) {
+            return "Congratulations! You are eligible for a high limit credit score.";
+        } else {
+            return "Sorry, you are not eligible for a high limit credit score.";
         }
     }
 
-    public static class CreditEvaluationRequest {
-        private int annualIncome;
-        private int creditScore;
-
-        public int getAnnualIncome() {
-            return annualIncome;
-        }
-
-        public void setAnnualIncome(int annualIncome) {
-            this.annualIncome = annualIncome;
-        }
-
-        public int getCreditScore() {
-            return creditScore;
-        }
-
-        public void setCreditScore(int creditScore) {
-            this.creditScore = creditScore;
+    @GetMapping("/{applicantId}/moderateLimitCreditScore")
+    public String checkModerateLimitCreditScoreEligibility(@PathVariable Long applicantId) {
+        boolean isEligible = applicantService.isEligibleForModerateLimitCreditScore(applicantId);
+        if (isEligible) {
+            return "Congratulations! You are eligible for a credit score with a moderate limit.";
+        } else {
+            return "Sorry, you are not eligible for a credit score with a moderate limit.";
         }
     }
 }

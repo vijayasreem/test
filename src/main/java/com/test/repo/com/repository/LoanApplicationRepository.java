@@ -11,24 +11,37 @@ import java.util.List;
 @Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
 
-    // Query to evaluate loan applications based on provided information
-    @Query("SELECT la FROM LoanApplication la WHERE la.identification = ?1 AND la.proofOfIncome = ?2 AND la.creditHistory = ?3 AND la.employmentDetails = ?4")
-    List<LoanApplication> evaluateLoanApplications(String identification, String proofOfIncome, String creditHistory, String employmentDetails);
+    // Query to retrieve loan applications by status
+    List<LoanApplication> findByStatus(String status);
 
-    // Query to determine loan amount, interest rate, and repayment period
-    @Query("SELECT la.loanAmount, la.interestRate, la.repaymentPeriod FROM LoanApplication la WHERE la.id = ?1")
-    Object[] getLoanDetails(long loanApplicationId);
+    // Query to retrieve loan applications by loan product
+    List<LoanApplication> findByLoanProduct(String loanProduct);
 
-    // Query to retrieve approved loan applications
-    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'APPROVED'")
-    List<LoanApplication> getApprovedLoanApplications();
+    // Query to retrieve loan applications by eligibility criteria
+    @Query("SELECT la FROM LoanApplication la WHERE la.eligibilityCriteria = ?1")
+    List<LoanApplication> findByEligibilityCriteria(String eligibilityCriteria);
 
-    // Query to retrieve loan terms and conditions
-    @Query("SELECT la.termsAndConditions FROM LoanApplication la WHERE la.id = ?1")
-    String getLoanTermsAndConditions(long loanApplicationId);
+    // Query to retrieve loan applications by date range
+    @Query("SELECT la FROM LoanApplication la WHERE la.applicationDate BETWEEN ?1 AND ?2")
+    List<LoanApplication> findByApplicationDateRange(Date startDate, Date endDate);
 
-    // Query to update loan application status
-    @Query("UPDATE LoanApplication la SET la.status = ?2 WHERE la.id = ?1")
-    void updateLoanApplicationStatus(long loanApplicationId, String status);
+    // Query to retrieve loan applications by regulatory changes
+    @Query("SELECT la FROM LoanApplication la WHERE la.regulatoryChanges = ?1")
+    List<LoanApplication> findByRegulatoryChanges(String regulatoryChanges);
 
+    // Query to retrieve loan applications by business process changes
+    @Query("SELECT la FROM LoanApplication la WHERE la.businessProcessChanges = ?1")
+    List<LoanApplication> findByBusinessProcessChanges(String businessProcessChanges);
+
+    // Query to retrieve loan applications by configuration and customization
+    @Query("SELECT la FROM LoanApplication la WHERE la.configuration = ?1 AND la.customization = ?2")
+    List<LoanApplication> findByConfigurationAndCustomization(String configuration, String customization);
+
+    // Query to retrieve loan applications by version control
+    @Query("SELECT la FROM LoanApplication la WHERE la.versionControl = ?1")
+    List<LoanApplication> findByVersionControl(String versionControl);
+
+    // Query to retrieve loan applications by documentation and training materials
+    @Query("SELECT la FROM LoanApplication la WHERE la.documentation = ?1 AND la.trainingMaterials = ?2")
+    List<LoanApplication> findByDocumentationAndTrainingMaterials(String documentation, String trainingMaterials);
 }

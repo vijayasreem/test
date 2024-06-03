@@ -1,38 +1,50 @@
-
 package com.test.repo.com.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+@Table(name = "loan_application")
 public class LoanApplication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String identification;
-    private String proofOfIncome;
-    private String creditHistory;
-    private String employmentDetails;
-    private Double loanAmount;
-    private Double interestRate;
-    private Integer repaymentPeriod;
+
+    @Column(name = "status")
     private String status;
-    private String termsAndConditions;
 
-    // Constructors, getters and setters
+    @Column(name = "loan_product")
+    private String loanProduct;
 
-    public LoanApplication() {
-    }
+    @Column(name = "eligibility_criteria")
+    private String eligibilityCriteria;
 
-    public LoanApplication(String identification, String proofOfIncome, String creditHistory, String employmentDetails) {
-        this.identification = identification;
-        this.proofOfIncome = proofOfIncome;
-        this.creditHistory = creditHistory;
-        this.employmentDetails = employmentDetails;
-    }
+    @Column(name = "application_date")
+    private Date applicationDate;
+
+    @Column(name = "regulatory_changes")
+    private String regulatoryChanges;
+
+    @Column(name = "business_process_changes")
+    private String businessProcessChanges;
+
+    @Column(name = "configuration")
+    private String configuration;
+
+    @Column(name = "customization")
+    private String customization;
+
+    @Column(name = "version_control")
+    private String versionControl;
+
+    @Column(name = "documentation")
+    private String documentation;
+
+    @Column(name = "training_materials")
+    private String trainingMaterials;
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -40,62 +52,6 @@ public class LoanApplication {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getIdentification() {
-        return identification;
-    }
-
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    public String getProofOfIncome() {
-        return proofOfIncome;
-    }
-
-    public void setProofOfIncome(String proofOfIncome) {
-        this.proofOfIncome = proofOfIncome;
-    }
-
-    public String getCreditHistory() {
-        return creditHistory;
-    }
-
-    public void setCreditHistory(String creditHistory) {
-        this.creditHistory = creditHistory;
-    }
-
-    public String getEmploymentDetails() {
-        return employmentDetails;
-    }
-
-    public void setEmploymentDetails(String employmentDetails) {
-        this.employmentDetails = employmentDetails;
-    }
-
-    public Double getLoanAmount() {
-        return loanAmount;
-    }
-
-    public void setLoanAmount(Double loanAmount) {
-        this.loanAmount = loanAmount;
-    }
-
-    public Double getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(Double interestRate) {
-        this.interestRate = interestRate;
-    }
-
-    public Integer getRepaymentPeriod() {
-        return repaymentPeriod;
-    }
-
-    public void setRepaymentPeriod(Integer repaymentPeriod) {
-        this.repaymentPeriod = repaymentPeriod;
     }
 
     public String getStatus() {
@@ -106,11 +62,83 @@ public class LoanApplication {
         this.status = status;
     }
 
-    public String getTermsAndConditions() {
-        return termsAndConditions;
+    public String getLoanProduct() {
+        return loanProduct;
     }
 
-    public void setTermsAndConditions(String termsAndConditions) {
-        this.termsAndConditions = termsAndConditions;
+    public void setLoanProduct(String loanProduct) {
+        this.loanProduct = loanProduct;
+    }
+
+    public String getEligibilityCriteria() {
+        return eligibilityCriteria;
+    }
+
+    public void setEligibilityCriteria(String eligibilityCriteria) {
+        this.eligibilityCriteria = eligibilityCriteria;
+    }
+
+    public Date getApplicationDate() {
+        return applicationDate;
+    }
+
+    public void setApplicationDate(Date applicationDate) {
+        this.applicationDate = applicationDate;
+    }
+
+    public String getRegulatoryChanges() {
+        return regulatoryChanges;
+    }
+
+    public void setRegulatoryChanges(String regulatoryChanges) {
+        this.regulatoryChanges = regulatoryChanges;
+    }
+
+    public String getBusinessProcessChanges() {
+        return businessProcessChanges;
+    }
+
+    public void setBusinessProcessChanges(String businessProcessChanges) {
+        this.businessProcessChanges = businessProcessChanges;
+    }
+
+    public String getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(String configuration) {
+        this.configuration = configuration;
+    }
+
+    public String getCustomization() {
+        return customization;
+    }
+
+    public void setCustomization(String customization) {
+        this.customization = customization;
+    }
+
+    public String getVersionControl() {
+        return versionControl;
+    }
+
+    public void setVersionControl(String versionControl) {
+        this.versionControl = versionControl;
+    }
+
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    public void setDocumentation(String documentation) {
+        this.documentation = documentation;
+    }
+
+    public String getTrainingMaterials() {
+        return trainingMaterials;
+    }
+
+    public void setTrainingMaterials(String trainingMaterials) {
+        this.trainingMaterials = trainingMaterials;
     }
 }

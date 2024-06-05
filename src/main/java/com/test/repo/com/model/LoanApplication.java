@@ -1,48 +1,25 @@
+
 package com.test.repo.com.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "loan_application")
 public class LoanApplication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "status")
     private String status;
-
-    @Column(name = "loan_product")
     private String loanProduct;
-
-    @Column(name = "eligibility_criteria")
     private String eligibilityCriteria;
-
-    @Column(name = "application_date")
     private Date applicationDate;
-
-    @Column(name = "regulatory_changes")
     private String regulatoryChanges;
-
-    @Column(name = "business_process_changes")
     private String businessProcessChanges;
-
-    @Column(name = "configuration")
-    private String configuration;
-
-    @Column(name = "customization")
-    private String customization;
-
-    @Column(name = "version_control")
-    private String versionControl;
-
-    @Column(name = "documentation")
-    private String documentation;
-
-    @Column(name = "training_materials")
-    private String trainingMaterials;
+    private int version;
 
     // Getters and Setters
 
@@ -102,43 +79,11 @@ public class LoanApplication {
         this.businessProcessChanges = businessProcessChanges;
     }
 
-    public String getConfiguration() {
-        return configuration;
+    public int getVersion() {
+        return version;
     }
 
-    public void setConfiguration(String configuration) {
-        this.configuration = configuration;
-    }
-
-    public String getCustomization() {
-        return customization;
-    }
-
-    public void setCustomization(String customization) {
-        this.customization = customization;
-    }
-
-    public String getVersionControl() {
-        return versionControl;
-    }
-
-    public void setVersionControl(String versionControl) {
-        this.versionControl = versionControl;
-    }
-
-    public String getDocumentation() {
-        return documentation;
-    }
-
-    public void setDocumentation(String documentation) {
-        this.documentation = documentation;
-    }
-
-    public String getTrainingMaterials() {
-        return trainingMaterials;
-    }
-
-    public void setTrainingMaterials(String trainingMaterials) {
-        this.trainingMaterials = trainingMaterials;
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

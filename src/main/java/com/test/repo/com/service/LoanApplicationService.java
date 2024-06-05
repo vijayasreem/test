@@ -42,15 +42,7 @@ public class LoanApplicationService {
         return loanApplicationRepository.findByBusinessProcessChanges(businessProcessChanges);
     }
 
-    public List<LoanApplication> getLoanApplicationsByConfigurationAndCustomization(String configuration, String customization) {
-        return loanApplicationRepository.findByConfigurationAndCustomization(configuration, customization);
-    }
-
-    public List<LoanApplication> getLoanApplicationsByVersionControl(String versionControl) {
-        return loanApplicationRepository.findByVersionControl(versionControl);
-    }
-
-    public List<LoanApplication> getLoanApplicationsByDocumentationAndTrainingMaterials(String documentation, String trainingMaterials) {
-        return loanApplicationRepository.findByDocumentationAndTrainingMaterials(documentation, trainingMaterials);
+    public List<LoanApplication> getLoanApplicationsByVersion(int version) {
+        return loanApplicationRepository.findByVersion(version);
     }
 }

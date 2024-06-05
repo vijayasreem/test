@@ -33,15 +33,7 @@ public interface LoanApplicationRepository extends JpaRepository<LoanApplication
     @Query("SELECT la FROM LoanApplication la WHERE la.businessProcessChanges = ?1")
     List<LoanApplication> findByBusinessProcessChanges(String businessProcessChanges);
 
-    // Query to retrieve loan applications by configuration and customization
-    @Query("SELECT la FROM LoanApplication la WHERE la.configuration = ?1 AND la.customization = ?2")
-    List<LoanApplication> findByConfigurationAndCustomization(String configuration, String customization);
-
-    // Query to retrieve loan applications by version control
-    @Query("SELECT la FROM LoanApplication la WHERE la.versionControl = ?1")
-    List<LoanApplication> findByVersionControl(String versionControl);
-
-    // Query to retrieve loan applications by documentation and training materials
-    @Query("SELECT la FROM LoanApplication la WHERE la.documentation = ?1 AND la.trainingMaterials = ?2")
-    List<LoanApplication> findByDocumentationAndTrainingMaterials(String documentation, String trainingMaterials);
+    // Query to retrieve loan applications by version
+    @Query("SELECT la FROM LoanApplication la WHERE la.version = ?1")
+    List<LoanApplication> findByVersion(int version);
 }

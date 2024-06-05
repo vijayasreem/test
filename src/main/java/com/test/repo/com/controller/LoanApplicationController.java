@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loan-applications")
+@RequestMapping("/loanApplications")
 public class LoanApplicationController {
 
     private final LoanApplicationService loanApplicationService;
@@ -24,43 +24,33 @@ public class LoanApplicationController {
         return loanApplicationService.getLoanApplicationsByStatus(status);
     }
 
-    @GetMapping("/loan-product/{loanProduct}")
+    @GetMapping("/loanProduct/{loanProduct}")
     public List<LoanApplication> getLoanApplicationsByLoanProduct(@PathVariable String loanProduct) {
         return loanApplicationService.getLoanApplicationsByLoanProduct(loanProduct);
     }
 
-    @GetMapping("/eligibility-criteria/{eligibilityCriteria}")
+    @GetMapping("/eligibilityCriteria/{eligibilityCriteria}")
     public List<LoanApplication> getLoanApplicationsByEligibilityCriteria(@PathVariable String eligibilityCriteria) {
         return loanApplicationService.getLoanApplicationsByEligibilityCriteria(eligibilityCriteria);
     }
 
-    @GetMapping("/application-date-range")
+    @GetMapping("/applicationDateRange")
     public List<LoanApplication> getLoanApplicationsByApplicationDateRange(@RequestParam Date startDate, @RequestParam Date endDate) {
         return loanApplicationService.getLoanApplicationsByApplicationDateRange(startDate, endDate);
     }
 
-    @GetMapping("/regulatory-changes/{regulatoryChanges}")
+    @GetMapping("/regulatoryChanges/{regulatoryChanges}")
     public List<LoanApplication> getLoanApplicationsByRegulatoryChanges(@PathVariable String regulatoryChanges) {
         return loanApplicationService.getLoanApplicationsByRegulatoryChanges(regulatoryChanges);
     }
 
-    @GetMapping("/business-process-changes/{businessProcessChanges}")
+    @GetMapping("/businessProcessChanges/{businessProcessChanges}")
     public List<LoanApplication> getLoanApplicationsByBusinessProcessChanges(@PathVariable String businessProcessChanges) {
         return loanApplicationService.getLoanApplicationsByBusinessProcessChanges(businessProcessChanges);
     }
 
-    @GetMapping("/configuration-and-customization")
-    public List<LoanApplication> getLoanApplicationsByConfigurationAndCustomization(@RequestParam String configuration, @RequestParam String customization) {
-        return loanApplicationService.getLoanApplicationsByConfigurationAndCustomization(configuration, customization);
-    }
-
-    @GetMapping("/version-control/{versionControl}")
-    public List<LoanApplication> getLoanApplicationsByVersionControl(@PathVariable String versionControl) {
-        return loanApplicationService.getLoanApplicationsByVersionControl(versionControl);
-    }
-
-    @GetMapping("/documentation-and-training-materials")
-    public List<LoanApplication> getLoanApplicationsByDocumentationAndTrainingMaterials(@RequestParam String documentation, @RequestParam String trainingMaterials) {
-        return loanApplicationService.getLoanApplicationsByDocumentationAndTrainingMaterials(documentation, trainingMaterials);
+    @GetMapping("/version/{version}")
+    public List<LoanApplication> getLoanApplicationsByVersion(@PathVariable int version) {
+        return loanApplicationService.getLoanApplicationsByVersion(version);
     }
 }

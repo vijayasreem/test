@@ -19,22 +19,12 @@ public class ApplicantController {
     }
 
     @GetMapping("/{applicantId}/highLimitCreditScore")
-    public String checkHighLimitCreditScoreEligibility(@PathVariable Long applicantId) {
-        boolean isEligible = applicantService.isEligibleForHighLimitCreditScore(applicantId);
-        if (isEligible) {
-            return "Congratulations! You are eligible for a high limit credit score.";
-        } else {
-            return "Sorry, you are not eligible for a high limit credit score.";
-        }
+    public boolean isEligibleForHighLimitCreditScore(@PathVariable Long applicantId) {
+        return applicantService.isEligibleForHighLimitCreditScore(applicantId);
     }
 
     @GetMapping("/{applicantId}/moderateLimitCreditScore")
-    public String checkModerateLimitCreditScoreEligibility(@PathVariable Long applicantId) {
-        boolean isEligible = applicantService.isEligibleForModerateLimitCreditScore(applicantId);
-        if (isEligible) {
-            return "Congratulations! You are eligible for a credit score with a moderate limit.";
-        } else {
-            return "Sorry, you are not eligible for a credit score with a moderate limit.";
-        }
+    public boolean isEligibleForModerateLimitCreditScore(@PathVariable Long applicantId) {
+        return applicantService.isEligibleForModerateLimitCreditScore(applicantId);
     }
 }

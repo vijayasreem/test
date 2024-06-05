@@ -16,8 +16,8 @@ public class Applicant {
     private double annualIncome;
     
     private int creditScore;
-    
-    // Getters and setters
+
+    // getters and setters
     
     public Long getId() {
         return id;

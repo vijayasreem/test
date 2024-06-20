@@ -38,7 +38,11 @@ public class EventService {
         return eventRepository.findByInterests(interests);
     }
 
-    public List<Event> getEventsByCategoryAndDateAndInterests(String category, LocalDate date, List<String> interests) {
-        return eventRepository.findByCategoryAndDateAndInterests(category, date, interests);
+    public List<Event> getEventsByCategoryAndDateRange(String category, LocalDate startDate, LocalDate endDate) {
+        return eventRepository.findByCategoryAndDateRange(category, startDate, endDate);
+    }
+
+    public List<Event> getEventsByCategoryAndDateRangeAndInterests(String category, LocalDate startDate, LocalDate endDate, List<String> interests) {
+        return eventRepository.findByCategoryAndDateRangeAndInterests(category, startDate, endDate, interests);
     }
 }

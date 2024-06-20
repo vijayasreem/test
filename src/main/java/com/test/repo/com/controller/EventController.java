@@ -44,8 +44,13 @@ public class EventController {
         return eventService.getEventsByInterests(interests);
     }
 
-    @GetMapping("/category/{category}/date/{date}/interests")
-    public List<Event> getEventsByCategoryAndDateAndInterests(@PathVariable String category, @PathVariable LocalDate date, @RequestParam List<String> interests) {
-        return eventService.getEventsByCategoryAndDateAndInterests(category, date, interests);
+    @GetMapping("/category/{category}/date-range")
+    public List<Event> getEventsByCategoryAndDateRange(@PathVariable String category, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+        return eventService.getEventsByCategoryAndDateRange(category, startDate, endDate);
+    }
+
+    @GetMapping("/category/{category}/date-range/interests")
+    public List<Event> getEventsByCategoryAndDateRangeAndInterests(@PathVariable String category, @RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam List<String> interests) {
+        return eventService.getEventsByCategoryAndDateRangeAndInterests(category, startDate, endDate, interests);
     }
 }

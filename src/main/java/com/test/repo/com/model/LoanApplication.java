@@ -13,13 +13,11 @@ public class LoanApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long customerId;
     private String status;
-    private String loanProduct;
-    private String eligibilityCriteria;
-    private Date applicationDate;
-    private String regulatoryChanges;
-    private String businessProcessChanges;
-    private int version;
+    private String channel;
+    private boolean additionalDocumentationRequired;
+    private String applicationId;
 
     // Getters and Setters
 
@@ -31,6 +29,14 @@ public class LoanApplication {
         this.id = id;
     }
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -39,51 +45,27 @@ public class LoanApplication {
         this.status = status;
     }
 
-    public String getLoanProduct() {
-        return loanProduct;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setLoanProduct(String loanProduct) {
-        this.loanProduct = loanProduct;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public String getEligibilityCriteria() {
-        return eligibilityCriteria;
+    public boolean isAdditionalDocumentationRequired() {
+        return additionalDocumentationRequired;
     }
 
-    public void setEligibilityCriteria(String eligibilityCriteria) {
-        this.eligibilityCriteria = eligibilityCriteria;
+    public void setAdditionalDocumentationRequired(boolean additionalDocumentationRequired) {
+        this.additionalDocumentationRequired = additionalDocumentationRequired;
     }
 
-    public Date getApplicationDate() {
-        return applicationDate;
+    public String getApplicationId() {
+        return applicationId;
     }
 
-    public void setApplicationDate(Date applicationDate) {
-        this.applicationDate = applicationDate;
-    }
-
-    public String getRegulatoryChanges() {
-        return regulatoryChanges;
-    }
-
-    public void setRegulatoryChanges(String regulatoryChanges) {
-        this.regulatoryChanges = regulatoryChanges;
-    }
-
-    public String getBusinessProcessChanges() {
-        return businessProcessChanges;
-    }
-
-    public void setBusinessProcessChanges(String businessProcessChanges) {
-        this.businessProcessChanges = businessProcessChanges;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 }

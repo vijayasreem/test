@@ -11,29 +11,35 @@ import java.util.List;
 @Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
 
-    // Query to retrieve loan applications by status
+    // Query to retrieve loan applications by customer ID
+    List<LoanApplication> findByCustomerId(Long customerId);
+
+    // Query to retrieve loan applications by application status
     List<LoanApplication> findByStatus(String status);
 
-    // Query to retrieve loan applications by loan product
-    List<LoanApplication> findByLoanProduct(String loanProduct);
+    // Query to retrieve loan applications by channel (in-person, website, mobile app)
+    List<LoanApplication> findByChannel(String channel);
 
-    // Query to retrieve loan applications by eligibility criteria
-    @Query("SELECT la FROM LoanApplication la WHERE la.eligibilityCriteria = ?1")
-    List<LoanApplication> findByEligibilityCriteria(String eligibilityCriteria);
+    // Query to retrieve loan applications by customer ID and channel
+    List<LoanApplication> findByCustomerIdAndChannel(Long customerId, String channel);
 
-    // Query to retrieve loan applications by date range
-    @Query("SELECT la FROM LoanApplication la WHERE la.applicationDate BETWEEN ?1 AND ?2")
-    List<LoanApplication> findByApplicationDateRange(Date startDate, Date endDate);
+    // Query to retrieve loan applications by customer ID and status
+    List<LoanApplication> findByCustomerIdAndStatus(Long customerId, String status);
 
-    // Query to retrieve loan applications by regulatory changes
-    @Query("SELECT la FROM LoanApplication la WHERE la.regulatoryChanges = ?1")
-    List<LoanApplication> findByRegulatoryChanges(String regulatoryChanges);
+    // Query to retrieve loan applications by channel and status
+    List<LoanApplication> findByChannelAndStatus(String channel, String status);
 
-    // Query to retrieve loan applications by business process changes
-    @Query("SELECT la FROM LoanApplication la WHERE la.businessProcessChanges = ?1")
-    List<LoanApplication> findByBusinessProcessChanges(String businessProcessChanges);
+    // Query to retrieve loan applications by customer ID, channel, and status
+    List<LoanApplication> findByCustomerIdAndChannelAndStatus(Long customerId, String channel, String status);
 
-    // Query to retrieve loan applications by version
-    @Query("SELECT la FROM LoanApplication la WHERE la.version = ?1")
-    List<LoanApplication> findByVersion(int version);
+    // Query to retrieve loan applications with real-time updates
+    @Query("SELECT la FROM LoanApplication la WHERE la.status <> 'COMPLETED'")
+    List<LoanApplication> findApplicationsWithRealTimeUpdates();
+
+    // Query to retrieve loan applications with additional documentation required
+    @Query("SELECT la FROM LoanApplication la WHERE la.additionalDocumentationRequired = true")
+    List<LoanApplication> findApplicationsWithAdditionalDocumentationRequired();
+
+    // Query to retrieve loan applications with a specific application ID
+    LoanApplication findByApplicationId(String applicationId);
 }

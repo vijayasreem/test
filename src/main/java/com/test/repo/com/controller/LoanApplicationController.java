@@ -5,11 +5,10 @@ import com.test.repo.com.service.LoanApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loanApplications")
+@RequestMapping("/loan-applications")
 public class LoanApplicationController {
 
     private final LoanApplicationService loanApplicationService;
@@ -19,38 +18,53 @@ public class LoanApplicationController {
         this.loanApplicationService = loanApplicationService;
     }
 
+    @GetMapping("/customer/{customerId}")
+    public List<LoanApplication> getLoanApplicationsByCustomerId(@PathVariable Long customerId) {
+        return loanApplicationService.getLoanApplicationsByCustomerId(customerId);
+    }
+
     @GetMapping("/status/{status}")
     public List<LoanApplication> getLoanApplicationsByStatus(@PathVariable String status) {
         return loanApplicationService.getLoanApplicationsByStatus(status);
     }
 
-    @GetMapping("/loanProduct/{loanProduct}")
-    public List<LoanApplication> getLoanApplicationsByLoanProduct(@PathVariable String loanProduct) {
-        return loanApplicationService.getLoanApplicationsByLoanProduct(loanProduct);
+    @GetMapping("/channel/{channel}")
+    public List<LoanApplication> getLoanApplicationsByChannel(@PathVariable String channel) {
+        return loanApplicationService.getLoanApplicationsByChannel(channel);
     }
 
-    @GetMapping("/eligibilityCriteria/{eligibilityCriteria}")
-    public List<LoanApplication> getLoanApplicationsByEligibilityCriteria(@PathVariable String eligibilityCriteria) {
-        return loanApplicationService.getLoanApplicationsByEligibilityCriteria(eligibilityCriteria);
+    @GetMapping("/customer/{customerId}/channel/{channel}")
+    public List<LoanApplication> getLoanApplicationsByCustomerIdAndChannel(@PathVariable Long customerId, @PathVariable String channel) {
+        return loanApplicationService.getLoanApplicationsByCustomerIdAndChannel(customerId, channel);
     }
 
-    @GetMapping("/applicationDateRange")
-    public List<LoanApplication> getLoanApplicationsByApplicationDateRange(@RequestParam Date startDate, @RequestParam Date endDate) {
-        return loanApplicationService.getLoanApplicationsByApplicationDateRange(startDate, endDate);
+    @GetMapping("/customer/{customerId}/status/{status}")
+    public List<LoanApplication> getLoanApplicationsByCustomerIdAndStatus(@PathVariable Long customerId, @PathVariable String status) {
+        return loanApplicationService.getLoanApplicationsByCustomerIdAndStatus(customerId, status);
     }
 
-    @GetMapping("/regulatoryChanges/{regulatoryChanges}")
-    public List<LoanApplication> getLoanApplicationsByRegulatoryChanges(@PathVariable String regulatoryChanges) {
-        return loanApplicationService.getLoanApplicationsByRegulatoryChanges(regulatoryChanges);
+    @GetMapping("/channel/{channel}/status/{status}")
+    public List<LoanApplication> getLoanApplicationsByChannelAndStatus(@PathVariable String channel, @PathVariable String status) {
+        return loanApplicationService.getLoanApplicationsByChannelAndStatus(channel, status);
     }
 
-    @GetMapping("/businessProcessChanges/{businessProcessChanges}")
-    public List<LoanApplication> getLoanApplicationsByBusinessProcessChanges(@PathVariable String businessProcessChanges) {
-        return loanApplicationService.getLoanApplicationsByBusinessProcessChanges(businessProcessChanges);
+    @GetMapping("/customer/{customerId}/channel/{channel}/status/{status}")
+    public List<LoanApplication> getLoanApplicationsByCustomerIdAndChannelAndStatus(@PathVariable Long customerId, @PathVariable String channel, @PathVariable String status) {
+        return loanApplicationService.getLoanApplicationsByCustomerIdAndChannelAndStatus(customerId, channel, status);
     }
 
-    @GetMapping("/version/{version}")
-    public List<LoanApplication> getLoanApplicationsByVersion(@PathVariable int version) {
-        return loanApplicationService.getLoanApplicationsByVersion(version);
+    @GetMapping("/real-time-updates")
+    public List<LoanApplication> getApplicationsWithRealTimeUpdates() {
+        return loanApplicationService.getApplicationsWithRealTimeUpdates();
+    }
+
+    @GetMapping("/additional-documentation-required")
+    public List<LoanApplication> getApplicationsWithAdditionalDocumentationRequired() {
+        return loanApplicationService.getApplicationsWithAdditionalDocumentationRequired();
+    }
+
+    @GetMapping("/{applicationId}")
+    public LoanApplication getLoanApplicationByApplicationId(@PathVariable String applicationId) {
+        return loanApplicationService.getLoanApplicationByApplicationId(applicationId);
     }
 }

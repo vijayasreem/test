@@ -1,3 +1,4 @@
+
 package com.test.repo.com.model;
 
 import javax.persistence.Entity;
@@ -13,11 +14,10 @@ public class LoanApplicant {
     private Long id;
 
     private String name;
-    private int age;
-    private double income;
     private int creditScore;
+    private double income;
 
-    // getters and setters
+    // Add getters and setters
 
     public Long getId() {
         return id;
@@ -35,12 +35,12 @@ public class LoanApplicant {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getCreditScore() {
+        return creditScore;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setCreditScore(int creditScore) {
+        this.creditScore = creditScore;
     }
 
     public double getIncome() {
@@ -49,13 +49,5 @@ public class LoanApplicant {
 
     public void setIncome(double income) {
         this.income = income;
-    }
-
-    public int getCreditScore() {
-        return creditScore;
-    }
-
-    public void setCreditScore(int creditScore) {
-        this.creditScore = creditScore;
     }
 }

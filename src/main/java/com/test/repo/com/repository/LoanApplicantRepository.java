@@ -18,9 +18,6 @@ public interface LoanApplicantRepository extends JpaRepository<LoanApplicant, Lo
     @Query("SELECT l FROM LoanApplicant l WHERE l.creditScore >= :minCreditScore AND l.income >= :minIncome")
     List<LoanApplicant> findByCreditScoreAndIncomeGreaterThanEqual(int minCreditScore, double minIncome);
 
-    @Query("SELECT l FROM LoanApplicant l WHERE l.creditScore >= :minCreditScore AND l.income >= :minIncome AND l.age >= :minAge")
-    List<LoanApplicant> findByCreditScoreAndIncomeAndAgeGreaterThanEqual(int minCreditScore, double minIncome, int minAge);
-
     // Add more custom queries as per your requirements
 
 }

@@ -29,10 +29,6 @@ public class LoanApplicantService {
         return loanApplicantRepository.findByCreditScoreAndIncomeGreaterThanEqual(minCreditScore, minIncome);
     }
 
-    public List<LoanApplicant> findByCreditScoreAndIncomeAndAgeGreaterThanEqual(int minCreditScore, double minIncome, int minAge) {
-        return loanApplicantRepository.findByCreditScoreAndIncomeAndAgeGreaterThanEqual(minCreditScore, minIncome, minAge);
-    }
-
     // Add more business methods as per your requirements
 
 }

@@ -1,4 +1,3 @@
-
 package com.test.repo.com.model;
 
 import javax.persistence.Entity;
@@ -13,13 +12,12 @@ public class LoanApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long customerId;
     private String status;
-    private String channel;
-    private boolean additionalDocumentationRequired;
-    private String applicationId;
+    private double loanAmount;
+    private double interestRate;
+    private int repaymentPeriod;
 
-    // Getters and Setters
+    // getters and setters
 
     public Long getId() {
         return id;
@@ -27,14 +25,6 @@ public class LoanApplication {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
     }
 
     public String getStatus() {
@@ -45,27 +35,27 @@ public class LoanApplication {
         this.status = status;
     }
 
-    public String getChannel() {
-        return channel;
+    public double getLoanAmount() {
+        return loanAmount;
     }
 
-    public void setChannel(String channel) {
-        this.channel = channel;
+    public void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
     }
 
-    public boolean isAdditionalDocumentationRequired() {
-        return additionalDocumentationRequired;
+    public double getInterestRate() {
+        return interestRate;
     }
 
-    public void setAdditionalDocumentationRequired(boolean additionalDocumentationRequired) {
-        this.additionalDocumentationRequired = additionalDocumentationRequired;
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
     }
 
-    public String getApplicationId() {
-        return applicationId;
+    public int getRepaymentPeriod() {
+        return repaymentPeriod;
     }
 
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
+    public void setRepaymentPeriod(int repaymentPeriod) {
+        this.repaymentPeriod = repaymentPeriod;
     }
 }

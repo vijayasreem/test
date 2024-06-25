@@ -6,40 +6,28 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
 
-    // Query to retrieve loan applications by customer ID
-    List<LoanApplication> findByCustomerId(Long customerId);
+    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'PENDING'")
+    List<LoanApplication> findPendingApplications();
 
-    // Query to retrieve loan applications by application status
-    List<LoanApplication> findByStatus(String status);
+    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'APPROVED'")
+    List<LoanApplication> findApprovedApplications();
 
-    // Query to retrieve loan applications by channel (in-person, website, mobile app)
-    List<LoanApplication> findByChannel(String channel);
+    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'DISBURSED'")
+    List<LoanApplication> findDisbursedApplications();
 
-    // Query to retrieve loan applications by customer ID and channel
-    List<LoanApplication> findByCustomerIdAndChannel(Long customerId, String channel);
+    @Query("SELECT la FROM LoanApplication la WHERE la.loanAmount <= ?1")
+    List<LoanApplication> findApplicationsByLoanAmountLessThanOrEqual(double loanAmount);
 
-    // Query to retrieve loan applications by customer ID and status
-    List<LoanApplication> findByCustomerIdAndStatus(Long customerId, String status);
+    @Query("SELECT la FROM LoanApplication la WHERE la.interestRate >= ?1 AND la.interestRate <= ?2")
+    List<LoanApplication> findApplicationsByInterestRateBetween(double minInterestRate, double maxInterestRate);
 
-    // Query to retrieve loan applications by channel and status
-    List<LoanApplication> findByChannelAndStatus(String channel, String status);
+    @Query("SELECT la FROM LoanApplication la WHERE la.repaymentPeriod >= ?1 AND la.repaymentPeriod <= ?2")
+    List<LoanApplication> findApplicationsByRepaymentPeriodBetween(int minRepaymentPeriod, int maxRepaymentPeriod);
 
-    // Query to retrieve loan applications by customer ID, channel, and status
-    List<LoanApplication> findByCustomerIdAndChannelAndStatus(Long customerId, String channel, String status);
+    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'APPROVED' AND la.loanAmount <= ?1 AND la.interestRate >= ?2 AND la.interestRate <= ?3 AND la.repaymentPeriod >= ?4 AND la.repaymentPeriod <= ?5")
+    List<LoanApplication> findApprovedApplicationsByCriteria(double loanAmount, double minInterestRate, double maxInterestRate, int minRepaymentPeriod, int maxRepaymentPeriod);
 
-    // Query to retrieve loan applications with real-time updates
-    @Query("SELECT la FROM LoanApplication la WHERE la.status <> 'COMPLETED'")
-    List<LoanApplication> findApplicationsWithRealTimeUpdates();
-
-    // Query to retrieve loan applications with additional documentation required
-    @Query("SELECT la FROM LoanApplication la WHERE la.additionalDocumentationRequired = true")
-    List<LoanApplication> findApplicationsWithAdditionalDocumentationRequired();
-
-    // Query to retrieve loan applications with a specific application ID
-    LoanApplication findByApplicationId(String applicationId);
 }

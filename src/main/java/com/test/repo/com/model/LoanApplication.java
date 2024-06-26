@@ -1,3 +1,4 @@
+
 package com.test.repo.com.model;
 
 import javax.persistence.Entity;
@@ -12,12 +13,14 @@ public class LoanApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String channel;
     private String status;
-    private double loanAmount;
-    private double interestRate;
-    private int repaymentPeriod;
+    private Long customerId;
+    private String applicationId;
+    private boolean additionalDocumentationRequired;
+    private String estimatedTimeline;
 
-    // getters and setters
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -25,6 +28,14 @@ public class LoanApplication {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
     public String getStatus() {
@@ -35,27 +46,35 @@ public class LoanApplication {
         this.status = status;
     }
 
-    public double getLoanAmount() {
-        return loanAmount;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setLoanAmount(double loanAmount) {
-        this.loanAmount = loanAmount;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
-    public double getInterestRate() {
-        return interestRate;
+    public String getApplicationId() {
+        return applicationId;
     }
 
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
-    public int getRepaymentPeriod() {
-        return repaymentPeriod;
+    public boolean isAdditionalDocumentationRequired() {
+        return additionalDocumentationRequired;
     }
 
-    public void setRepaymentPeriod(int repaymentPeriod) {
-        this.repaymentPeriod = repaymentPeriod;
+    public void setAdditionalDocumentationRequired(boolean additionalDocumentationRequired) {
+        this.additionalDocumentationRequired = additionalDocumentationRequired;
+    }
+
+    public String getEstimatedTimeline() {
+        return estimatedTimeline;
+    }
+
+    public void setEstimatedTimeline(String estimatedTimeline) {
+        this.estimatedTimeline = estimatedTimeline;
     }
 }

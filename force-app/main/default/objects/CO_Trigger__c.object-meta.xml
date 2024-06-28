@@ -1,0 +1,137 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Loan_Application__c</name>
+    <label>Loan Application</label>
+    <pluralLabel>Loan Applications</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <nameField>
+        <label>Loan Application Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <fields>
+        <fullName>Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Channel</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In-Person</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mobile App</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Identification__c</fullName>
+        <externalId>false</externalId>
+        <label>Identification</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+    </fields>
+    <fields>
+        <fullName>Income__c</fullName>
+        <externalId>false</externalId>
+        <label>Income</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Credit_History__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit History</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+    </fields>
+    <fields>
+        <fullName>Employment_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Employment Details</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Additional Information Required</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Declined</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Loan Offer Accepted</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status_Update__c</fullName>
+        <externalId>false</externalId>
+        <label>Status Update</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Support__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Support</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+    </fields>
+    <fields>
+        <fullName>Feedback__c</fullName>
+        <externalId>false</externalId>
+        <label>Feedback</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+    </fields>
+</CustomObject>

@@ -1,16 +1,14 @@
-
 package com.test.repo.com.service;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.test.repo.com.model.Applicant;
 import com.test.repo.com.repository.CreditCheckRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CreditCheckService {
 
-    private CreditCheckRepository creditCheckRepository;
+    private final CreditCheckRepository creditCheckRepository;
 
     @Autowired
     public CreditCheckService(CreditCheckRepository creditCheckRepository) {
@@ -21,11 +19,15 @@ public class CreditCheckService {
         return creditCheckRepository.getApplicantCreditScore(applicantId);
     }
 
-    public Applicant getApplicantFinancialHistory(Long applicantId) {
+    public Object[] getApplicantFinancialHistory(Long applicantId) {
         return creditCheckRepository.getApplicantFinancialHistory(applicantId);
     }
 
-    public Boolean isApplicantCreditworthy(Long applicantId, Integer minCreditScore, Integer paymentHistory, Double maxOutstandingDebts, Double maxCreditUtilization) {
-        return creditCheckRepository.isApplicantCreditworthy(applicantId, minCreditScore, paymentHistory, maxOutstandingDebts, maxCreditUtilization);
+    public Object[] getApplicantCreditDetails(Long applicantId) {
+        return creditCheckRepository.getApplicantCreditDetails(applicantId);
+    }
+
+    public boolean isCreditworthy(Long applicantId, Integer minCreditScore, String paymentHistory, Double maxOutstandingDebts, Double maxCreditUtilization) {
+        return creditCheckRepository.isCreditworthy(applicantId, minCreditScore, paymentHistory, maxOutstandingDebts, maxCreditUtilization);
     }
 }

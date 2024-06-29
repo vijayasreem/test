@@ -12,13 +12,13 @@ public class Applicant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private double annualIncome;
-    
-    private int creditScore;
+    private Integer creditScore;
+    private String paymentHistory;
+    private Double outstandingDebts;
+    private Double creditUtilization;
 
-    // getters and setters
-    
+    // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -27,19 +27,35 @@ public class Applicant {
         this.id = id;
     }
 
-    public double getAnnualIncome() {
-        return annualIncome;
-    }
-
-    public void setAnnualIncome(double annualIncome) {
-        this.annualIncome = annualIncome;
-    }
-
-    public int getCreditScore() {
+    public Integer getCreditScore() {
         return creditScore;
     }
 
-    public void setCreditScore(int creditScore) {
+    public void setCreditScore(Integer creditScore) {
         this.creditScore = creditScore;
+    }
+
+    public String getPaymentHistory() {
+        return paymentHistory;
+    }
+
+    public void setPaymentHistory(String paymentHistory) {
+        this.paymentHistory = paymentHistory;
+    }
+
+    public Double getOutstandingDebts() {
+        return outstandingDebts;
+    }
+
+    public void setOutstandingDebts(Double outstandingDebts) {
+        this.outstandingDebts = outstandingDebts;
+    }
+
+    public Double getCreditUtilization() {
+        return creditUtilization;
+    }
+
+    public void setCreditUtilization(Double creditUtilization) {
+        this.creditUtilization = creditUtilization;
     }
 }

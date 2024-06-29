@@ -1,21 +1,23 @@
 
 package com.test.repo.com.repository;
 
+import com.test.repo.com.model.Applicant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.test.repo.com.model.Applicant;
-
 @Repository
 public interface CreditCheckRepository extends JpaRepository<Applicant, Long> {
 
-    @Query("SELECT creditScore FROM Applicant WHERE id = :applicantId")
+    @Query("SELECT a.creditScore FROM Applicant a WHERE a.id = :applicantId")
     Integer getApplicantCreditScore(Long applicantId);
 
-    @Query("SELECT paymentHistory, outstandingDebts, creditUtilization FROM Applicant WHERE id = :applicantId")
-    Applicant getApplicantFinancialHistory(Long applicantId);
+    @Query("SELECT a.paymentHistory, a.outstandingDebts, a.creditUtilization FROM Applicant a WHERE a.id = :applicantId")
+    Object[] getApplicantFinancialHistory(Long applicantId);
 
-    @Query("SELECT CASE WHEN (creditScore >= :minCreditScore AND paymentHistory = :paymentHistory AND outstandingDebts <= :maxOutstandingDebts AND creditUtilization <= :maxCreditUtilization) THEN true ELSE false END FROM Applicant WHERE id = :applicantId")
-    Boolean isApplicantCreditworthy(Long applicantId, Integer minCreditScore, Integer paymentHistory, Double maxOutstandingDebts, Double maxCreditUtilization);
+    @Query("SELECT a.creditScore, a.paymentHistory, a.outstandingDebts, a.creditUtilization FROM Applicant a WHERE a.id = :applicantId")
+    Object[] getApplicantCreditDetails(Long applicantId);
+
+    @Query("SELECT CASE WHEN (a.creditScore >= :minCreditScore AND a.paymentHistory = :paymentHistory AND a.outstandingDebts <= :maxOutstandingDebts AND a.creditUtilization <= :maxCreditUtilization) THEN true ELSE false END FROM Applicant a WHERE a.id = :applicantId")
+    boolean isCreditworthy(Long applicantId, Integer minCreditScore, String paymentHistory, Double maxOutstandingDebts, Double maxCreditUtilization);
 }

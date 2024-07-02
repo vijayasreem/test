@@ -12,12 +12,15 @@ public class Applicant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer creditScore;
-    private String paymentHistory;
-    private Double outstandingDebts;
-    private Double creditUtilization;
 
-    // Getters and Setters
+    private Integer creditScore;
+    private Double loanAmount;
+    private Double interestRate;
+    private Double preQualifiedLoanAmount;
+    private Double minInterestRate;
+    private Double maxInterestRate;
+
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -35,27 +38,43 @@ public class Applicant {
         this.creditScore = creditScore;
     }
 
-    public String getPaymentHistory() {
-        return paymentHistory;
+    public Double getLoanAmount() {
+        return loanAmount;
     }
 
-    public void setPaymentHistory(String paymentHistory) {
-        this.paymentHistory = paymentHistory;
+    public void setLoanAmount(Double loanAmount) {
+        this.loanAmount = loanAmount;
     }
 
-    public Double getOutstandingDebts() {
-        return outstandingDebts;
+    public Double getInterestRate() {
+        return interestRate;
     }
 
-    public void setOutstandingDebts(Double outstandingDebts) {
-        this.outstandingDebts = outstandingDebts;
+    public void setInterestRate(Double interestRate) {
+        this.interestRate = interestRate;
     }
 
-    public Double getCreditUtilization() {
-        return creditUtilization;
+    public Double getPreQualifiedLoanAmount() {
+        return preQualifiedLoanAmount;
     }
 
-    public void setCreditUtilization(Double creditUtilization) {
-        this.creditUtilization = creditUtilization;
+    public void setPreQualifiedLoanAmount(Double preQualifiedLoanAmount) {
+        this.preQualifiedLoanAmount = preQualifiedLoanAmount;
+    }
+
+    public Double getMinInterestRate() {
+        return minInterestRate;
+    }
+
+    public void setMinInterestRate(Double minInterestRate) {
+        this.minInterestRate = minInterestRate;
+    }
+
+    public Double getMaxInterestRate() {
+        return maxInterestRate;
+    }
+
+    public void setMaxInterestRate(Double maxInterestRate) {
+        this.maxInterestRate = maxInterestRate;
     }
 }

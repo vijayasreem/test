@@ -9,9 +9,24 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ApplicantRepository extends JpaRepository<Applicant, Long> {
 
-    @Query("SELECT CASE WHEN a.annualIncome >= 30000 AND a.creditScore >= 700 THEN true ELSE false END FROM Applicant a WHERE a.id = :applicantId")
-    boolean isEligibleForHighLimitCreditScore(Long applicantId);
+    @Query("SELECT a.creditScore FROM Applicant a WHERE a.id = :applicantId")
+    Integer getCreditScoreById(Long applicantId);
 
-    @Query("SELECT CASE WHEN a.annualIncome >= 20000 AND a.creditScore >= 600 THEN true ELSE false END FROM Applicant a WHERE a.id = :applicantId")
-    boolean isEligibleForModerateLimitCreditScore(Long applicantId);
+    @Query("SELECT a.loanAmount FROM Applicant a WHERE a.id = :applicantId")
+    Double getLoanAmountById(Long applicantId);
+
+    @Query("SELECT a.interestRate FROM Applicant a WHERE a.id = :applicantId")
+    Double getInterestRateById(Long applicantId);
+
+    @Query("SELECT a.preQualifiedLoanAmount FROM Applicant a WHERE a.id = :applicantId")
+    Double getPreQualifiedLoanAmountById(Long applicantId);
+
+    @Query("SELECT a.minInterestRate FROM Applicant a WHERE a.id = :applicantId")
+    Double getMinInterestRateById(Long applicantId);
+
+    @Query("SELECT a.maxInterestRate FROM Applicant a WHERE a.id = :applicantId")
+    Double getMaxInterestRateById(Long applicantId);
+
+    // Other custom queries and methods can be added here
+
 }

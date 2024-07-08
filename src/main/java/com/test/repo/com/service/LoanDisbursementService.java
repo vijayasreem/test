@@ -5,6 +5,7 @@ import com.test.repo.com.repository.LoanDisbursementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,18 +18,26 @@ public class LoanDisbursementService {
         this.loanDisbursementRepository = loanDisbursementRepository;
     }
 
-    public LoanDisbursement findByBankDetails(String bankDetails) {
-        return loanDisbursementRepository.findByBankDetails(bankDetails);
+    public List<LoanDisbursement> findByRecipientName(String recipientName) {
+        return loanDisbursementRepository.findByRecipientName(recipientName);
     }
 
-    public List<LoanDisbursement> findVerifiedLoanDisbursements() {
-        return loanDisbursementRepository.findVerifiedLoanDisbursements();
+    public List<LoanDisbursement> findByLoanAmountGreaterThan(double loanAmount) {
+        return loanDisbursementRepository.findByLoanAmountGreaterThan(loanAmount);
     }
 
-    public List<LoanDisbursement> findDisbursedLoanDisbursements() {
-        return loanDisbursementRepository.findDisbursedLoanDisbursements();
+    public List<LoanDisbursement> findByDisbursementDateBetween(Date startDate, Date endDate) {
+        return loanDisbursementRepository.findByDisbursementDateBetween(startDate, endDate);
     }
 
-    // Add more business methods as per your requirements
+    public List<LoanDisbursement> findByDisbursementStatus(String disbursementStatus) {
+        return loanDisbursementRepository.findByDisbursementStatus(disbursementStatus);
+    }
+
+    public List<LoanDisbursement> findByRecipientNameAndDisbursementStatus(String recipientName, String disbursementStatus) {
+        return loanDisbursementRepository.findByRecipientNameAndDisbursementStatus(recipientName, disbursementStatus);
+    }
+
+    // Add any additional custom methods or business logic as per your requirements
 
 }

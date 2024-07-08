@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class LoanDisbursement {
@@ -13,15 +14,17 @@ public class LoanDisbursement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String bankDetails;
+    private String recipientName;
 
-    private boolean verified;
+    private double loanAmount;
 
-    private boolean disbursed;
+    private Date disbursementDate;
 
-    // Add more fields as per your requirements
+    private String disbursementStatus;
 
-    // Add getters and setters for all fields
+    // Add any additional fields as per your requirements
+
+    // Add getters and setters for all the fields
 
     public Long getId() {
         return id;
@@ -31,30 +34,38 @@ public class LoanDisbursement {
         this.id = id;
     }
 
-    public String getBankDetails() {
-        return bankDetails;
+    public String getRecipientName() {
+        return recipientName;
     }
 
-    public void setBankDetails(String bankDetails) {
-        this.bankDetails = bankDetails;
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
     }
 
-    public boolean isVerified() {
-        return verified;
+    public double getLoanAmount() {
+        return loanAmount;
     }
 
-    public void setVerified(boolean verified) {
-        this.verified = verified;
+    public void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
     }
 
-    public boolean isDisbursed() {
-        return disbursed;
+    public Date getDisbursementDate() {
+        return disbursementDate;
     }
 
-    public void setDisbursed(boolean disbursed) {
-        this.disbursed = disbursed;
+    public void setDisbursementDate(Date disbursementDate) {
+        this.disbursementDate = disbursementDate;
     }
 
-    // Add more custom methods as per your requirements
+    public String getDisbursementStatus() {
+        return disbursementStatus;
+    }
+
+    public void setDisbursementStatus(String disbursementStatus) {
+        this.disbursementStatus = disbursementStatus;
+    }
+
+    // Add any additional methods as per your requirements
 
 }

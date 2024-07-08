@@ -3,21 +3,24 @@ package com.test.repo.com.repository;
 
 import com.test.repo.com.model.LoanDisbursement;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
+import java.util.List;
 
 @Repository
 public interface LoanDisbursementRepository extends JpaRepository<LoanDisbursement, Long> {
 
-    @Query("SELECT ld FROM LoanDisbursement ld WHERE ld.bankDetails = :bankDetails")
-    LoanDisbursement findByBankDetails(String bankDetails);
+    List<LoanDisbursement> findByRecipientName(String recipientName);
 
-    @Query("SELECT ld FROM LoanDisbursement ld WHERE ld.verified = true")
-    List<LoanDisbursement> findVerifiedLoanDisbursements();
+    List<LoanDisbursement> findByLoanAmountGreaterThan(double loanAmount);
 
-    @Query("SELECT ld FROM LoanDisbursement ld WHERE ld.disbursed = true")
-    List<LoanDisbursement> findDisbursedLoanDisbursements();
+    List<LoanDisbursement> findByDisbursementDateBetween(Date startDate, Date endDate);
 
-    // Add more custom queries as per your requirements
+    List<LoanDisbursement> findByDisbursementStatus(String disbursementStatus);
+
+    List<LoanDisbursement> findByRecipientNameAndDisbursementStatus(String recipientName, String disbursementStatus);
+
+    // Add any additional custom queries or methods as per your requirements
 
 }

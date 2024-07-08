@@ -3,8 +3,11 @@ package com.test.repo.com.controller;
 import com.test.repo.com.model.LoanDisbursement;
 import com.test.repo.com.service.LoanDisbursementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,21 +21,36 @@ public class LoanDisbursementController {
         this.loanDisbursementService = loanDisbursementService;
     }
 
-    @GetMapping("/findByBankDetails")
-    public LoanDisbursement findByBankDetails(@RequestParam String bankDetails) {
-        return loanDisbursementService.findByBankDetails(bankDetails);
+    @GetMapping("/recipient/{recipientName}")
+    public ResponseEntity<List<LoanDisbursement>> findByRecipientName(@PathVariable String recipientName) {
+        List<LoanDisbursement> loanDisbursements = loanDisbursementService.findByRecipientName(recipientName);
+        return new ResponseEntity<>(loanDisbursements, HttpStatus.OK);
     }
 
-    @GetMapping("/findVerifiedLoanDisbursements")
-    public List<LoanDisbursement> findVerifiedLoanDisbursements() {
-        return loanDisbursementService.findVerifiedLoanDisbursements();
+    @GetMapping("/loan-amount-greater-than/{loanAmount}")
+    public ResponseEntity<List<LoanDisbursement>> findByLoanAmountGreaterThan(@PathVariable double loanAmount) {
+        List<LoanDisbursement> loanDisbursements = loanDisbursementService.findByLoanAmountGreaterThan(loanAmount);
+        return new ResponseEntity<>(loanDisbursements, HttpStatus.OK);
     }
 
-    @GetMapping("/findDisbursedLoanDisbursements")
-    public List<LoanDisbursement> findDisbursedLoanDisbursements() {
-        return loanDisbursementService.findDisbursedLoanDisbursements();
+    @GetMapping("/disbursement-date-between")
+    public ResponseEntity<List<LoanDisbursement>> findByDisbursementDateBetween(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
+        List<LoanDisbursement> loanDisbursements = loanDisbursementService.findByDisbursementDateBetween(startDate, endDate);
+        return new ResponseEntity<>(loanDisbursements, HttpStatus.OK);
     }
 
-    // Add more API endpoints and business methods as per your requirements
+    @GetMapping("/disbursement-status/{disbursementStatus}")
+    public ResponseEntity<List<LoanDisbursement>> findByDisbursementStatus(@PathVariable String disbursementStatus) {
+        List<LoanDisbursement> loanDisbursements = loanDisbursementService.findByDisbursementStatus(disbursementStatus);
+        return new ResponseEntity<>(loanDisbursements, HttpStatus.OK);
+    }
+
+    @GetMapping("/recipient/{recipientName}/disbursement-status/{disbursementStatus}")
+    public ResponseEntity<List<LoanDisbursement>> findByRecipientNameAndDisbursementStatus(@PathVariable String recipientName, @PathVariable String disbursementStatus) {
+        List<LoanDisbursement> loanDisbursements = loanDisbursementService.findByRecipientNameAndDisbursementStatus(recipientName, disbursementStatus);
+        return new ResponseEntity<>(loanDisbursements, HttpStatus.OK);
+    }
+
+    // Add any additional custom methods or business logic as per your requirements
 
 }

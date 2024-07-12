@@ -17,31 +17,14 @@ public class LoanApplicationService {
         this.loanApplicationRepository = loanApplicationRepository;
     }
 
-    public List<LoanApplication> getLoanApplicationsByChannel(String channel) {
-        return loanApplicationRepository.findByChannel(channel);
+    public List<LoanApplication> findApprovedApplications() {
+        return loanApplicationRepository.findApprovedApplications();
     }
 
-    public List<LoanApplication> getLoanApplicationsByStatus(String status) {
-        return loanApplicationRepository.findByStatus(status);
+    public List<LoanApplication> findApplicationsWithApprovedDocumentVerification() {
+        return loanApplicationRepository.findApplicationsWithApprovedDocumentVerification();
     }
 
-    public List<LoanApplication> getLoanApplicationsByCustomerId(Long customerId) {
-        return loanApplicationRepository.findByCustomerId(customerId);
-    }
+    // Add more business methods as per your requirements
 
-    public LoanApplication getLoanApplicationByApplicationId(String applicationId) {
-        return loanApplicationRepository.findByApplicationId(applicationId);
-    }
-
-    public List<LoanApplication> getApplicationsWithRealTimeUpdates() {
-        return loanApplicationRepository.findApplicationsWithRealTimeUpdates();
-    }
-
-    public List<LoanApplication> getApplicationsWithAdditionalDocumentationRequired() {
-        return loanApplicationRepository.findApplicationsWithAdditionalDocumentationRequired();
-    }
-
-    public List<LoanApplication> getApplicationsWithEstimatedTimeline() {
-        return loanApplicationRepository.findApplicationsWithEstimatedTimeline();
-    }
 }

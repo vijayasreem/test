@@ -13,14 +13,11 @@ public class LoanApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String channel;
-    private String status;
-    private Long customerId;
-    private String applicationId;
-    private boolean additionalDocumentationRequired;
-    private String estimatedTimeline;
+    private String creditCheckStatus;
 
-    // Getters and Setters
+    private String documentVerificationStatus;
+
+    // Add more fields as per your requirements
 
     public Long getId() {
         return id;
@@ -30,51 +27,22 @@ public class LoanApplication {
         this.id = id;
     }
 
-    public String getChannel() {
-        return channel;
+    public String getCreditCheckStatus() {
+        return creditCheckStatus;
     }
 
-    public void setChannel(String channel) {
-        this.channel = channel;
+    public void setCreditCheckStatus(String creditCheckStatus) {
+        this.creditCheckStatus = creditCheckStatus;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDocumentVerificationStatus() {
+        return documentVerificationStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDocumentVerificationStatus(String documentVerificationStatus) {
+        this.documentVerificationStatus = documentVerificationStatus;
     }
 
-    public Long getCustomerId() {
-        return customerId;
-    }
+    // Add getters and setters for other fields
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
-    }
-
-    public boolean isAdditionalDocumentationRequired() {
-        return additionalDocumentationRequired;
-    }
-
-    public void setAdditionalDocumentationRequired(boolean additionalDocumentationRequired) {
-        this.additionalDocumentationRequired = additionalDocumentationRequired;
-    }
-
-    public String getEstimatedTimeline() {
-        return estimatedTimeline;
-    }
-
-    public void setEstimatedTimeline(String estimatedTimeline) {
-        this.estimatedTimeline = estimatedTimeline;
-    }
 }

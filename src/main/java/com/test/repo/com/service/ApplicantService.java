@@ -5,6 +5,8 @@ import com.test.repo.com.repository.ApplicantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApplicantService {
 
@@ -15,30 +17,26 @@ public class ApplicantService {
         this.applicantRepository = applicantRepository;
     }
 
-    public Integer getCreditScoreById(Long applicantId) {
-        return applicantRepository.getCreditScoreById(applicantId);
+    public List<Applicant> findAllWithIdentificationVerified() {
+        return applicantRepository.findAllWithIdentificationVerified();
     }
 
-    public Double getLoanAmountById(Long applicantId) {
-        return applicantRepository.getLoanAmountById(applicantId);
+    public List<Applicant> findAllWithIncomeVerified() {
+        return applicantRepository.findAllWithIncomeVerified();
     }
 
-    public Double getInterestRateById(Long applicantId) {
-        return applicantRepository.getInterestRateById(applicantId);
+    public List<Applicant> findAllWithCreditHistoryVerified() {
+        return applicantRepository.findAllWithCreditHistoryVerified();
     }
 
-    public Double getPreQualifiedLoanAmountById(Long applicantId) {
-        return applicantRepository.getPreQualifiedLoanAmountById(applicantId);
+    public List<Applicant> findAllWithEmploymentDetailsVerified() {
+        return applicantRepository.findAllWithEmploymentDetailsVerified();
     }
 
-    public Double getMinInterestRateById(Long applicantId) {
-        return applicantRepository.getMinInterestRateById(applicantId);
+    public List<Applicant> findAllWithVerificationIssues() {
+        return applicantRepository.findAllWithVerificationIssues();
     }
 
-    public Double getMaxInterestRateById(Long applicantId) {
-        return applicantRepository.getMaxInterestRateById(applicantId);
-    }
-
-    // Other business methods and logic can be added here
+    // Add more business methods as per your requirements
 
 }

@@ -13,14 +13,14 @@ public class Applicant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer creditScore;
-    private Double loanAmount;
-    private Double interestRate;
-    private Double preQualifiedLoanAmount;
-    private Double minInterestRate;
-    private Double maxInterestRate;
+    private String name;
+    private String identificationVerified;
+    private String incomeVerified;
+    private String creditHistoryVerified;
+    private String employmentDetailsVerified;
+    private String verificationIssues;
 
-    // Getters and setters
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -30,51 +30,51 @@ public class Applicant {
         this.id = id;
     }
 
-    public Integer getCreditScore() {
-        return creditScore;
+    public String getName() {
+        return name;
     }
 
-    public void setCreditScore(Integer creditScore) {
-        this.creditScore = creditScore;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Double getLoanAmount() {
-        return loanAmount;
+    public String getIdentificationVerified() {
+        return identificationVerified;
     }
 
-    public void setLoanAmount(Double loanAmount) {
-        this.loanAmount = loanAmount;
+    public void setIdentificationVerified(String identificationVerified) {
+        this.identificationVerified = identificationVerified;
     }
 
-    public Double getInterestRate() {
-        return interestRate;
+    public String getIncomeVerified() {
+        return incomeVerified;
     }
 
-    public void setInterestRate(Double interestRate) {
-        this.interestRate = interestRate;
+    public void setIncomeVerified(String incomeVerified) {
+        this.incomeVerified = incomeVerified;
     }
 
-    public Double getPreQualifiedLoanAmount() {
-        return preQualifiedLoanAmount;
+    public String getCreditHistoryVerified() {
+        return creditHistoryVerified;
     }
 
-    public void setPreQualifiedLoanAmount(Double preQualifiedLoanAmount) {
-        this.preQualifiedLoanAmount = preQualifiedLoanAmount;
+    public void setCreditHistoryVerified(String creditHistoryVerified) {
+        this.creditHistoryVerified = creditHistoryVerified;
     }
 
-    public Double getMinInterestRate() {
-        return minInterestRate;
+    public String getEmploymentDetailsVerified() {
+        return employmentDetailsVerified;
     }
 
-    public void setMinInterestRate(Double minInterestRate) {
-        this.minInterestRate = minInterestRate;
+    public void setEmploymentDetailsVerified(String employmentDetailsVerified) {
+        this.employmentDetailsVerified = employmentDetailsVerified;
     }
 
-    public Double getMaxInterestRate() {
-        return maxInterestRate;
+    public String getVerificationIssues() {
+        return verificationIssues;
     }
 
-    public void setMaxInterestRate(Double maxInterestRate) {
-        this.maxInterestRate = maxInterestRate;
+    public void setVerificationIssues(String verificationIssues) {
+        this.verificationIssues = verificationIssues;
     }
 }

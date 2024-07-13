@@ -6,27 +6,26 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ApplicantRepository extends JpaRepository<Applicant, Long> {
 
-    @Query("SELECT a.creditScore FROM Applicant a WHERE a.id = :applicantId")
-    Integer getCreditScoreById(Long applicantId);
+    @Query("SELECT a FROM Applicant a WHERE a.identificationVerified = true")
+    List<Applicant> findAllWithIdentificationVerified();
 
-    @Query("SELECT a.loanAmount FROM Applicant a WHERE a.id = :applicantId")
-    Double getLoanAmountById(Long applicantId);
+    @Query("SELECT a FROM Applicant a WHERE a.incomeVerified = true")
+    List<Applicant> findAllWithIncomeVerified();
 
-    @Query("SELECT a.interestRate FROM Applicant a WHERE a.id = :applicantId")
-    Double getInterestRateById(Long applicantId);
+    @Query("SELECT a FROM Applicant a WHERE a.creditHistoryVerified = true")
+    List<Applicant> findAllWithCreditHistoryVerified();
 
-    @Query("SELECT a.preQualifiedLoanAmount FROM Applicant a WHERE a.id = :applicantId")
-    Double getPreQualifiedLoanAmountById(Long applicantId);
+    @Query("SELECT a FROM Applicant a WHERE a.employmentDetailsVerified = true")
+    List<Applicant> findAllWithEmploymentDetailsVerified();
 
-    @Query("SELECT a.minInterestRate FROM Applicant a WHERE a.id = :applicantId")
-    Double getMinInterestRateById(Long applicantId);
+    @Query("SELECT a FROM Applicant a WHERE a.verificationIssues IS NOT EMPTY")
+    List<Applicant> findAllWithVerificationIssues();
 
-    @Query("SELECT a.maxInterestRate FROM Applicant a WHERE a.id = :applicantId")
-    Double getMaxInterestRateById(Long applicantId);
-
-    // Other custom queries and methods can be added here
+    // Add more custom queries as per your requirements
 
 }

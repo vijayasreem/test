@@ -3,7 +3,11 @@ package com.test.repo.com.controller;
 import com.test.repo.com.model.Applicant;
 import com.test.repo.com.service.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/applicants")
@@ -16,36 +20,31 @@ public class ApplicantController {
         this.applicantService = applicantService;
     }
 
-    @GetMapping("/{applicantId}/credit-score")
-    public Integer getCreditScoreById(@PathVariable Long applicantId) {
-        return applicantService.getCreditScoreById(applicantId);
+    @GetMapping("/identification-verified")
+    public List<Applicant> findAllWithIdentificationVerified() {
+        return applicantService.findAllWithIdentificationVerified();
     }
 
-    @GetMapping("/{applicantId}/loan-amount")
-    public Double getLoanAmountById(@PathVariable Long applicantId) {
-        return applicantService.getLoanAmountById(applicantId);
+    @GetMapping("/income-verified")
+    public List<Applicant> findAllWithIncomeVerified() {
+        return applicantService.findAllWithIncomeVerified();
     }
 
-    @GetMapping("/{applicantId}/interest-rate")
-    public Double getInterestRateById(@PathVariable Long applicantId) {
-        return applicantService.getInterestRateById(applicantId);
+    @GetMapping("/credit-history-verified")
+    public List<Applicant> findAllWithCreditHistoryVerified() {
+        return applicantService.findAllWithCreditHistoryVerified();
     }
 
-    @GetMapping("/{applicantId}/pre-qualified-loan-amount")
-    public Double getPreQualifiedLoanAmountById(@PathVariable Long applicantId) {
-        return applicantService.getPreQualifiedLoanAmountById(applicantId);
+    @GetMapping("/employment-details-verified")
+    public List<Applicant> findAllWithEmploymentDetailsVerified() {
+        return applicantService.findAllWithEmploymentDetailsVerified();
     }
 
-    @GetMapping("/{applicantId}/min-interest-rate")
-    public Double getMinInterestRateById(@PathVariable Long applicantId) {
-        return applicantService.getMinInterestRateById(applicantId);
+    @GetMapping("/verification-issues")
+    public List<Applicant> findAllWithVerificationIssues() {
+        return applicantService.findAllWithVerificationIssues();
     }
 
-    @GetMapping("/{applicantId}/max-interest-rate")
-    public Double getMaxInterestRateById(@PathVariable Long applicantId) {
-        return applicantService.getMaxInterestRateById(applicantId);
-    }
-
-    // Other endpoints and business methods can be added here
+    // Add more endpoints for other business methods as per your requirements
 
 }

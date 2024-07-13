@@ -30,6 +30,6 @@ public class LoanApplicationController {
         return loanApplicationService.findApplicationsWithApprovedDocumentVerification();
     }
 
-    // Add more API endpoints for other business methods as per your requirements
+    // Add more endpoints for other business methods as needed
 
 }

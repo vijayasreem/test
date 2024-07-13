@@ -25,6 +25,6 @@ public class LoanApplicationService {
         return loanApplicationRepository.findApplicationsWithApprovedDocumentVerification();
     }
 
-    // Add more business methods as per your requirements
+    // Add more business methods as needed
 
 }

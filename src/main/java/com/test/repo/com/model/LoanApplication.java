@@ -17,7 +17,7 @@ public class LoanApplication {
 
     private String documentVerificationStatus;
 
-    // Add more fields as per your requirements
+    // Add more fields as needed
 
     public Long getId() {
         return id;
@@ -43,6 +43,6 @@ public class LoanApplication {
         this.documentVerificationStatus = documentVerificationStatus;
     }
 
-    // Add getters and setters for other fields
+    // Add getters and setters for other fields as needed
 
 }

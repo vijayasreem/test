@@ -1,3 +1,4 @@
+
 package com.test.repo.com.service;
 
 import com.test.repo.com.model.Applicant;
@@ -23,11 +24,19 @@ public class CreditCheckService {
         return creditCheckRepository.getApplicantFinancialHistory(applicantId);
     }
 
-    public Object[] getApplicantCreditDetails(Long applicantId) {
-        return creditCheckRepository.getApplicantCreditDetails(applicantId);
+    public Integer getApplicantCreditworthinessScore(Long applicantId) {
+        return creditCheckRepository.getApplicantCreditworthinessScore(applicantId);
     }
 
-    public boolean isCreditworthy(Long applicantId, Integer minCreditScore, String paymentHistory, Double maxOutstandingDebts, Double maxCreditUtilization) {
-        return creditCheckRepository.isCreditworthy(applicantId, minCreditScore, paymentHistory, maxOutstandingDebts, maxCreditUtilization);
+    public Boolean isApplicantCreditworthy(Long applicantId, Integer threshold) {
+        return creditCheckRepository.isApplicantCreditworthy(applicantId, threshold);
+    }
+
+    public Boolean isApplicantApproved(Long applicantId, Integer threshold) {
+        return creditCheckRepository.isApplicantApproved(applicantId, threshold);
+    }
+
+    public Applicant findApplicantById(Long applicantId) {
+        return creditCheckRepository.findApplicantById(applicantId);
     }
 }

@@ -15,9 +15,15 @@ public interface CreditCheckRepository extends JpaRepository<Applicant, Long> {
     @Query("SELECT a.paymentHistory, a.outstandingDebts, a.creditUtilization FROM Applicant a WHERE a.id = :applicantId")
     Object[] getApplicantFinancialHistory(Long applicantId);
 
-    @Query("SELECT a.creditScore, a.paymentHistory, a.outstandingDebts, a.creditUtilization FROM Applicant a WHERE a.id = :applicantId")
-    Object[] getApplicantCreditDetails(Long applicantId);
+    @Query("SELECT a.creditworthinessScore FROM Applicant a WHERE a.id = :applicantId")
+    Integer getApplicantCreditworthinessScore(Long applicantId);
 
-    @Query("SELECT CASE WHEN (a.creditScore >= :minCreditScore AND a.paymentHistory = :paymentHistory AND a.outstandingDebts <= :maxOutstandingDebts AND a.creditUtilization <= :maxCreditUtilization) THEN true ELSE false END FROM Applicant a WHERE a.id = :applicantId")
-    boolean isCreditworthy(Long applicantId, Integer minCreditScore, String paymentHistory, Double maxOutstandingDebts, Double maxCreditUtilization);
+    @Query("SELECT a.creditworthinessScore >= :threshold FROM Applicant a WHERE a.id = :applicantId")
+    Boolean isApplicantCreditworthy(Long applicantId, Integer threshold);
+
+    @Query("SELECT a.creditworthinessScore >= :threshold FROM Applicant a WHERE a.id = :applicantId")
+    Boolean isApplicantApproved(Long applicantId, Integer threshold);
+
+    @Query("SELECT a FROM Applicant a WHERE a.id = :applicantId")
+    Applicant findApplicantById(Long applicantId);
 }

@@ -1,24 +1,35 @@
 
 package com.test.repo.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "applicant")
 public class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String identificationVerified;
-    private String incomeVerified;
-    private String creditHistoryVerified;
-    private String employmentDetailsVerified;
-    private String verificationIssues;
+    @Column(name = "credit_score")
+    private Integer creditScore;
+
+    @Column(name = "payment_history")
+    private String paymentHistory;
+
+    @Column(name = "outstanding_debts")
+    private Double outstandingDebts;
+
+    @Column(name = "credit_utilization")
+    private Double creditUtilization;
+
+    @Column(name = "creditworthiness_score")
+    private Integer creditworthinessScore;
 
     // Getters and Setters
 
@@ -30,51 +41,43 @@ public class Applicant {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCreditScore() {
+        return creditScore;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCreditScore(Integer creditScore) {
+        this.creditScore = creditScore;
     }
 
-    public String getIdentificationVerified() {
-        return identificationVerified;
+    public String getPaymentHistory() {
+        return paymentHistory;
     }
 
-    public void setIdentificationVerified(String identificationVerified) {
-        this.identificationVerified = identificationVerified;
+    public void setPaymentHistory(String paymentHistory) {
+        this.paymentHistory = paymentHistory;
     }
 
-    public String getIncomeVerified() {
-        return incomeVerified;
+    public Double getOutstandingDebts() {
+        return outstandingDebts;
     }
 
-    public void setIncomeVerified(String incomeVerified) {
-        this.incomeVerified = incomeVerified;
+    public void setOutstandingDebts(Double outstandingDebts) {
+        this.outstandingDebts = outstandingDebts;
     }
 
-    public String getCreditHistoryVerified() {
-        return creditHistoryVerified;
+    public Double getCreditUtilization() {
+        return creditUtilization;
     }
 
-    public void setCreditHistoryVerified(String creditHistoryVerified) {
-        this.creditHistoryVerified = creditHistoryVerified;
+    public void setCreditUtilization(Double creditUtilization) {
+        this.creditUtilization = creditUtilization;
     }
 
-    public String getEmploymentDetailsVerified() {
-        return employmentDetailsVerified;
+    public Integer getCreditworthinessScore() {
+        return creditworthinessScore;
     }
 
-    public void setEmploymentDetailsVerified(String employmentDetailsVerified) {
-        this.employmentDetailsVerified = employmentDetailsVerified;
-    }
-
-    public String getVerificationIssues() {
-        return verificationIssues;
-    }
-
-    public void setVerificationIssues(String verificationIssues) {
-        this.verificationIssues = verificationIssues;
+    public void setCreditworthinessScore(Integer creditworthinessScore) {
+        this.creditworthinessScore = creditworthinessScore;
     }
 }

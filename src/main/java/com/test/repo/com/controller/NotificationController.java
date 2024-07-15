@@ -42,12 +42,12 @@ public class NotificationController {
     }
 
     @GetMapping("/applicant/{applicantId}/type/{type}/latest")
-    public List<Notification> getLatestNotificationsByApplicantIdAndType(@PathVariable Long applicantId, @PathVariable String type) {
+    public Notification getLatestNotificationByApplicantIdAndType(@PathVariable Long applicantId, @PathVariable String type) {
         return notificationService.findLatestByApplicantIdAndType(applicantId, type);
     }
 
     @GetMapping("/applicant/{applicantId}/type/{type}/status/{status}/latest")
-    public List<Notification> getLatestNotificationsByApplicantIdAndTypeAndStatus(@PathVariable Long applicantId, @PathVariable String type, @PathVariable String status) {
+    public Notification getLatestNotificationByApplicantIdAndTypeAndStatus(@PathVariable Long applicantId, @PathVariable String type, @PathVariable String status) {
         return notificationService.findLatestByApplicantIdAndTypeAndStatus(applicantId, type, status);
     }
 }

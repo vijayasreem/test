@@ -17,8 +17,6 @@ public class Notification {
     private String type;
     private Long timestamp;
 
-    // getters and setters
-
     public Long getId() {
         return id;
     }

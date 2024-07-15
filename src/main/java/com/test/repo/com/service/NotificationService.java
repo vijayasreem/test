@@ -1,3 +1,4 @@
+
 package com.test.repo.com.service;
 
 import com.test.repo.com.model.Notification;
@@ -33,11 +34,11 @@ public class NotificationService {
         return notificationRepository.findByApplicantIdAndTypeAndStatus(applicantId, type, status);
     }
 
-    public List<Notification> findLatestByApplicantIdAndType(Long applicantId, String type) {
+    public Notification findLatestByApplicantIdAndType(Long applicantId, String type) {
         return notificationRepository.findLatestByApplicantIdAndType(applicantId, type);
     }
 
-    public List<Notification> findLatestByApplicantIdAndTypeAndStatus(Long applicantId, String type, String status) {
+    public Notification findLatestByApplicantIdAndTypeAndStatus(Long applicantId, String type, String status) {
         return notificationRepository.findLatestByApplicantIdAndTypeAndStatus(applicantId, type, status);
     }
 }

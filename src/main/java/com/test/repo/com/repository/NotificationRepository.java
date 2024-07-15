@@ -24,8 +24,8 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
     List<Notification> findByApplicantIdAndTypeAndStatus(Long applicantId, String type, String status);
 
     @Query("SELECT n FROM Notification n WHERE n.applicantId = ?1 AND n.type = ?2 ORDER BY n.timestamp DESC")
-    List<Notification> findLatestByApplicantIdAndType(Long applicantId, String type);
+    Notification findLatestByApplicantIdAndType(Long applicantId, String type);
 
     @Query("SELECT n FROM Notification n WHERE n.applicantId = ?1 AND n.type = ?2 AND n.status = ?3 ORDER BY n.timestamp DESC")
-    List<Notification> findLatestByApplicantIdAndTypeAndStatus(Long applicantId, String type, String status);
+    Notification findLatestByApplicantIdAndTypeAndStatus(Long applicantId, String type, String status);
 }

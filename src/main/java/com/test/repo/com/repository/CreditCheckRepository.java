@@ -21,8 +21,8 @@ public interface CreditCheckRepository extends JpaRepository<Applicant, Long> {
     @Query("SELECT a.creditworthinessScore >= :threshold FROM Applicant a WHERE a.id = :applicantId")
     Boolean isApplicantCreditworthy(Long applicantId, Integer threshold);
 
-    @Query("SELECT a.creditworthinessScore >= :threshold FROM Applicant a WHERE a.id = :applicantId")
-    Boolean isApplicantApproved(Long applicantId, Integer threshold);
+    @Query("SELECT a.approved FROM Applicant a WHERE a.id = :applicantId")
+    Boolean isApplicantApproved(Long applicantId);
 
     @Query("SELECT a FROM Applicant a WHERE a.id = :applicantId")
     Applicant findApplicantById(Long applicantId);

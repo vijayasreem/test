@@ -35,13 +35,14 @@ public class CreditCheckController {
     }
 
     @GetMapping("/applicant/{applicantId}/creditworthy")
-    public Boolean isApplicantCreditworthy(@PathVariable Long applicantId, Integer threshold) {
+    public Boolean isApplicantCreditworthy(@PathVariable Long applicantId) {
+        Integer threshold = 700; // Set the threshold value here
         return creditCheckService.isApplicantCreditworthy(applicantId, threshold);
     }
 
     @GetMapping("/applicant/{applicantId}/approved")
-    public Boolean isApplicantApproved(@PathVariable Long applicantId, Integer threshold) {
-        return creditCheckService.isApplicantApproved(applicantId, threshold);
+    public Boolean isApplicantApproved(@PathVariable Long applicantId) {
+        return creditCheckService.isApplicantApproved(applicantId);
     }
 
     @GetMapping("/applicant/{applicantId}")

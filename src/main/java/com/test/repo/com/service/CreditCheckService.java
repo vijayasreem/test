@@ -32,8 +32,8 @@ public class CreditCheckService {
         return creditCheckRepository.isApplicantCreditworthy(applicantId, threshold);
     }
 
-    public Boolean isApplicantApproved(Long applicantId, Integer threshold) {
-        return creditCheckRepository.isApplicantApproved(applicantId, threshold);
+    public Boolean isApplicantApproved(Long applicantId) {
+        return creditCheckRepository.isApplicantApproved(applicantId);
     }
 
     public Applicant findApplicantById(Long applicantId) {

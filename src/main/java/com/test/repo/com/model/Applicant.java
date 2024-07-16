@@ -31,6 +31,9 @@ public class Applicant {
     @Column(name = "creditworthiness_score")
     private Integer creditworthinessScore;
 
+    @Column(name = "approved")
+    private Boolean approved;
+
     // Getters and Setters
 
     public Long getId() {
@@ -79,5 +82,13 @@ public class Applicant {
 
     public void setCreditworthinessScore(Integer creditworthinessScore) {
         this.creditworthinessScore = creditworthinessScore;
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 }

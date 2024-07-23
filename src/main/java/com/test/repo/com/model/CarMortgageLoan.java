@@ -1,3 +1,4 @@
+
 package com.test.repo.com.model;
 
 import javax.persistence.Entity;
@@ -12,9 +13,13 @@ public class CarMortgageLoan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long customerId;
     private String customerName;
-    private String applicationStatus;
-    private String applicationChannel;
+    private String contactNumber;
+    private String employmentDetails;
+    private String loanRequirements;
+    private Double loanAmount;
+    private String status;
 
     // Getters and Setters
 
@@ -26,6 +31,14 @@ public class CarMortgageLoan {
         this.id = id;
     }
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     public String getCustomerName() {
         return customerName;
     }
@@ -34,19 +47,43 @@ public class CarMortgageLoan {
         this.customerName = customerName;
     }
 
-    public String getApplicationStatus() {
-        return applicationStatus;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setApplicationStatus(String applicationStatus) {
-        this.applicationStatus = applicationStatus;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
-    public String getApplicationChannel() {
-        return applicationChannel;
+    public String getEmploymentDetails() {
+        return employmentDetails;
     }
 
-    public void setApplicationChannel(String applicationChannel) {
-        this.applicationChannel = applicationChannel;
+    public void setEmploymentDetails(String employmentDetails) {
+        this.employmentDetails = employmentDetails;
+    }
+
+    public String getLoanRequirements() {
+        return loanRequirements;
+    }
+
+    public void setLoanRequirements(String loanRequirements) {
+        this.loanRequirements = loanRequirements;
+    }
+
+    public Double getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(Double loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

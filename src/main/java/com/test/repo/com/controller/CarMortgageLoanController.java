@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loans")
+@RequestMapping("/car-mortgage-loan")
 public class CarMortgageLoanController {
 
     private final CarMortgageLoanService carMortgageLoanService;
@@ -18,53 +18,41 @@ public class CarMortgageLoanController {
         this.carMortgageLoanService = carMortgageLoanService;
     }
 
-    @GetMapping("/{id}")
-    public CarMortgageLoan getLoanById(@PathVariable long id) {
-        return carMortgageLoanService.findById(id);
+    @GetMapping("/customer/{customerId}")
+    public CarMortgageLoan findByCustomerId(@PathVariable Long customerId) {
+        return carMortgageLoanService.findByCustomerId(customerId);
     }
 
-    @GetMapping("/customer/{customerName}")
-    public List<CarMortgageLoan> getLoansByCustomerName(@PathVariable String customerName) {
+    @GetMapping("/status/{status}")
+    public List<CarMortgageLoan> findByStatus(@PathVariable String status) {
+        return carMortgageLoanService.findByStatus(status);
+    }
+
+    @GetMapping("/loan-amount/{loanAmount}")
+    public List<CarMortgageLoan> findByLoanAmountLessThanEqual(@PathVariable Double loanAmount) {
+        return carMortgageLoanService.findByLoanAmountLessThanEqual(loanAmount);
+    }
+
+    @GetMapping("/customer-name/{customerName}")
+    public List<CarMortgageLoan> findByCustomerName(@PathVariable String customerName) {
         return carMortgageLoanService.findByCustomerName(customerName);
     }
 
-    @GetMapping("/status/{applicationStatus}")
-    public List<CarMortgageLoan> getLoansByApplicationStatus(@PathVariable String applicationStatus) {
-        return carMortgageLoanService.findByApplicationStatus(applicationStatus);
+    @GetMapping("/contact-number/{contactNumber}")
+    public List<CarMortgageLoan> findByContactNumber(@PathVariable String contactNumber) {
+        return carMortgageLoanService.findByContactNumber(contactNumber);
     }
 
-    @GetMapping("/channel/{applicationChannel}")
-    public List<CarMortgageLoan> getLoansByApplicationChannel(@PathVariable String applicationChannel) {
-        return carMortgageLoanService.findByApplicationChannel(applicationChannel);
+    @GetMapping("/employment-details/{employmentDetails}")
+    public List<CarMortgageLoan> findByEmploymentDetails(@PathVariable String employmentDetails) {
+        return carMortgageLoanService.findByEmploymentDetails(employmentDetails);
     }
 
-    @GetMapping("/customer/{customerName}/status/{applicationStatus}")
-    public List<CarMortgageLoan> getLoansByCustomerNameAndApplicationStatus(@PathVariable String customerName, @PathVariable String applicationStatus) {
-        return carMortgageLoanService.findByCustomerNameAndApplicationStatus(customerName, applicationStatus);
+    @GetMapping("/loan-requirements/{loanRequirements}")
+    public List<CarMortgageLoan> findByLoanRequirements(@PathVariable String loanRequirements) {
+        return carMortgageLoanService.findByLoanRequirements(loanRequirements);
     }
 
-    @GetMapping("/customer/{customerName}/channel/{applicationChannel}")
-    public List<CarMortgageLoan> getLoansByCustomerNameAndApplicationChannel(@PathVariable String customerName, @PathVariable String applicationChannel) {
-        return carMortgageLoanService.findByCustomerNameAndApplicationChannel(customerName, applicationChannel);
-    }
+    // Add more methods as per your requirements
 
-    @GetMapping("/status/{applicationStatus}/channel/{applicationChannel}")
-    public List<CarMortgageLoan> getLoansByApplicationStatusAndApplicationChannel(@PathVariable String applicationStatus, @PathVariable String applicationChannel) {
-        return carMortgageLoanService.findByApplicationStatusAndApplicationChannel(applicationStatus, applicationChannel);
-    }
-
-    @GetMapping("/customer/{customerName}/status/{applicationStatus}/channel/{applicationChannel}")
-    public List<CarMortgageLoan> getLoansByCustomerNameAndApplicationStatusAndApplicationChannel(@PathVariable String customerName, @PathVariable String applicationStatus, @PathVariable String applicationChannel) {
-        return carMortgageLoanService.findByCustomerNameAndApplicationStatusAndApplicationChannel(customerName, applicationStatus, applicationChannel);
-    }
-
-    @PostMapping
-    public CarMortgageLoan createLoan(@RequestBody CarMortgageLoan loanApplication) {
-        return carMortgageLoanService.save(loanApplication);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteLoanById(@PathVariable long id) {
-        carMortgageLoanService.deleteById(id);
-    }
 }

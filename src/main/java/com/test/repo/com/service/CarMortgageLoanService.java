@@ -1,3 +1,4 @@
+
 package com.test.repo.com.service;
 
 import com.test.repo.com.model.CarMortgageLoan;
@@ -17,47 +18,38 @@ public class CarMortgageLoanService {
         this.carMortgageLoanRepository = carMortgageLoanRepository;
     }
 
-    // Custom queries for specific requirements
+    // Custom queries for car mortgage loan applications
 
-    public CarMortgageLoan findById(long id) {
-        return carMortgageLoanRepository.findById(id);
+    public CarMortgageLoan findByCustomerId(Long customerId) {
+        return carMortgageLoanRepository.findByCustomerId(customerId);
     }
+
+    public List<CarMortgageLoan> findByStatus(String status) {
+        return carMortgageLoanRepository.findByStatus(status);
+    }
+
+    public List<CarMortgageLoan> findByLoanAmountLessThanEqual(Double loanAmount) {
+        return carMortgageLoanRepository.findByLoanAmountLessThanEqual(loanAmount);
+    }
+
+    // Other required methods
 
     public List<CarMortgageLoan> findByCustomerName(String customerName) {
         return carMortgageLoanRepository.findByCustomerName(customerName);
     }
 
-    public List<CarMortgageLoan> findByApplicationStatus(String applicationStatus) {
-        return carMortgageLoanRepository.findByApplicationStatus(applicationStatus);
+    public List<CarMortgageLoan> findByContactNumber(String contactNumber) {
+        return carMortgageLoanRepository.findByContactNumber(contactNumber);
     }
 
-    public List<CarMortgageLoan> findByApplicationChannel(String applicationChannel) {
-        return carMortgageLoanRepository.findByApplicationChannel(applicationChannel);
+    public List<CarMortgageLoan> findByEmploymentDetails(String employmentDetails) {
+        return carMortgageLoanRepository.findByEmploymentDetails(employmentDetails);
     }
 
-    public List<CarMortgageLoan> findByCustomerNameAndApplicationStatus(String customerName, String applicationStatus) {
-        return carMortgageLoanRepository.findByCustomerNameAndApplicationStatus(customerName, applicationStatus);
+    public List<CarMortgageLoan> findByLoanRequirements(String loanRequirements) {
+        return carMortgageLoanRepository.findByLoanRequirements(loanRequirements);
     }
 
-    public List<CarMortgageLoan> findByCustomerNameAndApplicationChannel(String customerName, String applicationChannel) {
-        return carMortgageLoanRepository.findByCustomerNameAndApplicationChannel(customerName, applicationChannel);
-    }
+    // Add more methods as per your requirements
 
-    public List<CarMortgageLoan> findByApplicationStatusAndApplicationChannel(String applicationStatus, String applicationChannel) {
-        return carMortgageLoanRepository.findByApplicationStatusAndApplicationChannel(applicationStatus, applicationChannel);
-    }
-
-    public List<CarMortgageLoan> findByCustomerNameAndApplicationStatusAndApplicationChannel(String customerName, String applicationStatus, String applicationChannel) {
-        return carMortgageLoanRepository.findByCustomerNameAndApplicationStatusAndApplicationChannel(customerName, applicationStatus, applicationChannel);
-    }
-
-    // Other required methods
-
-    public CarMortgageLoan save(CarMortgageLoan loanApplication) {
-        return carMortgageLoanRepository.save(loanApplication);
-    }
-
-    public void deleteById(long id) {
-        carMortgageLoanRepository.deleteById(id);
-    }
 }

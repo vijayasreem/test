@@ -3,43 +3,33 @@ package com.test.repo.com.repository;
 
 import com.test.repo.com.model.CarMortgageLoan;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarMortgageLoanRepository extends JpaRepository<CarMortgageLoan, Long> {
 
-    // Custom queries for specific requirements
+    // Custom queries for car mortgage loan applications
 
-    // Query to find a loan application by ID
-    CarMortgageLoan findById(long id);
+    @Query("SELECT cml FROM CarMortgageLoan cml WHERE cml.customerId = :customerId")
+    CarMortgageLoan findByCustomerId(Long customerId);
 
-    // Query to find loan applications by customer name
-    List<CarMortgageLoan> findByCustomerName(String customerName);
+    @Query("SELECT cml FROM CarMortgageLoan cml WHERE cml.status = :status")
+    List<CarMortgageLoan> findByStatus(String status);
 
-    // Query to find loan applications by application status
-    List<CarMortgageLoan> findByApplicationStatus(String applicationStatus);
-
-    // Query to find loan applications by application channel (website, mobile app, in-person)
-    List<CarMortgageLoan> findByApplicationChannel(String applicationChannel);
-
-    // Query to find loan applications by customer name and application status
-    List<CarMortgageLoan> findByCustomerNameAndApplicationStatus(String customerName, String applicationStatus);
-
-    // Query to find loan applications by customer name and application channel
-    List<CarMortgageLoan> findByCustomerNameAndApplicationChannel(String customerName, String applicationChannel);
-
-    // Query to find loan applications by application status and application channel
-    List<CarMortgageLoan> findByApplicationStatusAndApplicationChannel(String applicationStatus, String applicationChannel);
-
-    // Query to find loan applications by customer name, application status, and application channel
-    List<CarMortgageLoan> findByCustomerNameAndApplicationStatusAndApplicationChannel(String customerName, String applicationStatus, String applicationChannel);
+    @Query("SELECT cml FROM CarMortgageLoan cml WHERE cml.loanAmount <= :loanAmount")
+    List<CarMortgageLoan> findByLoanAmountLessThanEqual(Double loanAmount);
 
     // Other required methods
 
-    // Method to save a new loan application
-    CarMortgageLoan save(CarMortgageLoan loanApplication);
+    List<CarMortgageLoan> findByCustomerName(String customerName);
 
-    // Method to delete a loan application by ID
-    void deleteById(long id);
+    List<CarMortgageLoan> findByContactNumber(String contactNumber);
+
+    List<CarMortgageLoan> findByEmploymentDetails(String employmentDetails);
+
+    List<CarMortgageLoan> findByLoanRequirements(String loanRequirements);
+
+    // Add more methods as per your requirements
 
 }
